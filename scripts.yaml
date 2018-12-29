@@ -1,0 +1,27 @@
+turn_off_master_bdrm_ceiling_fan:
+  alias: Turn off master bedroom ceiling fan
+  sequence:
+  - data:
+      event: master_bedroom_ceiling_fan_off
+    service: ifttt.trigger
+
+turn_master_bdrm_ceiling_fan_low:
+  alias: Turn master bedroom ceiling fan to low
+  sequence:
+  - data:
+      event: master_bedroom_ceiling_fan_low
+    service: ifttt.trigger
+
+turn_master_bdrm_ceiling_fan_med:
+  alias: Turn master bedroom ceiling fan to med
+  sequence:
+  - data:
+      event: master_bedroom_ceiling_fan_med
+    service: ifttt.trigger
+
+turn_master_bdrm_ceiling_fan_high:
+  alias: Turn master bedroom ceiling fan to high
+  sequence:
+  - data:
+      event: master_bedroom_ceiling_fan_high
+    service: ifttt.trigger

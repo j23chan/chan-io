@@ -1,0 +1,74 @@
+default_view:
+  name: Home
+  view: yes
+  icon: mdi:home
+  entities:
+    - persistent_notification.update_available
+    - group.weather
+    - group.lights
+    - group.master_bedroom
+    - group.security
+    - group.home_climate
+    - group.occupancy
+
+media_players:
+  name: Media
+  view: yes
+  icon: mdi:play-box-outline
+  entities:
+    - group.media_player
+
+system_status:
+  name: System Status
+  view: yes
+  icon: mdi:account-group
+  entities:
+    - group.people
+
+Home Climate:
+  - configurator.ecobee_thermostat
+  - climate.ecobee_thermostat
+  - sensor.family_room_temperature
+  - sensor.master_bedroom_temperature
+  - sensor.ecobee_thermostat_temperature
+  - sensor.carters_room_temperature
+  - sensor.ecobee_thermostat_humidity
+
+Lights:
+  - switch.smart_switch_1
+  - switch.smart_switch_2
+
+Master Bedroom:
+  control: hidden
+  entities:
+    - input_boolean.master_bedroom_light
+    - script.turn_off_master_bdrm_ceiling_fan
+    - script.turn_master_bdrm_ceiling_fan_low
+    - script.turn_master_bdrm_ceiling_fan_med
+    - script.turn_master_bdrm_ceiling_fan_high
+
+Media Player:
+  - media_player.family_room_tv
+
+Occupancy:
+  - binary_sensor.family_room_occupancy
+  - binary_sensor.master_bedroom_occupancy
+  - binary_sensor.ecobee_thermostat_occupancy
+  - binary_sensor.carters_room_occupancy
+
+Parents:
+  - device_tracker.chansiphone
+  - device_tracker.mer
+
+People:
+  - device_tracker.chansiphone
+  - device_tracker.mer
+  - device_tracker.mahmah_phone
+  - device_tracker.yehyeh_phone
+
+Security:
+  - camera.front_yard
+
+Weather:
+  - sun.sun
+  - weather.ecobee_thermostat

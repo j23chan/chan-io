@@ -1,0 +1,39 @@
+- id: christmas-lights-on
+  alias: Turn on Christmas lights in the evening
+  trigger:
+    platform: time
+    at: '18:00:00'
+  action:
+    service: switch.turn_on
+    entity_id: group.lights
+
+- id: christmas-lights-off
+  alias: Turn off Christmas lights at night
+  trigger:
+    platform: time
+    at: '23:00:00'
+  action:
+    service: switch.turn_off
+    entity_id: group.lights
+
+- id: ifttt-master-bedroom-light-on
+  alias: Turn on master bedroom lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.master_bedroom_light
+    to: 'on'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_light_on
+
+- id: ifttt-master-bedroom-light-off
+  alias: Turn off master bedroom lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.master_bedroom_light
+    to: 'off'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_light_off
