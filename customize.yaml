@@ -4,10 +4,12 @@ switch.smart_switch_1:
 switch.smart_switch_2:
   friendly_name: 'Christmas Tree'
   icon: mdi:light-switch
+  
+# Master Bedroom
 input_boolean.master_bedroom_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
-script.turn_off_master_bdrm_ceiling_fan:
+script.turn_master_bdrm_ceiling_fan_off:
   friendly_name: 'Off'
   icon: mdi:fan-off
   can_cancel: true
@@ -23,3 +25,13 @@ script.turn_master_bdrm_ceiling_fan_high:
   friendly_name: 'High'
   icon: mdi:fan
   can_cancel: true
+
+# Living Room
+input_boolean.living_room_light:
+  friendly_name: 'Lights'
+  icon: mdi:lightbulb-on-outline
+  
+# Libby Bedroom
+input_boolean.libby_bedroom_light:
+  friendly_name: 'Lights'
+  icon: mdi:lightbulb-on-outline

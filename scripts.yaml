@@ -1,4 +1,4 @@
-turn_off_master_bdrm_ceiling_fan:
+turn_master_bdrm_ceiling_fan_off:
   alias: Turn off master bedroom ceiling fan
   sequence:
   - data:

@@ -16,7 +16,7 @@
     service: switch.turn_off
     entity_id: group.lights
 
-- id: ifttt-master-bedroom-light-on
+- id: master-bedroom-light-on
   alias: Turn on master bedroom lights
   trigger:
   - platform: state
@@ -27,7 +27,7 @@
     data:
       event: master_bedroom_light_on
 
-- id: ifttt-master-bedroom-light-off
+- id: master-bedroom-light-off
   alias: Turn off master bedroom lights
   trigger:
   - platform: state
@@ -37,3 +37,47 @@
   - service: ifttt.trigger
     data:
       event: master_bedroom_light_off
+
+- id: living-room-light-on
+  alias: Turn on living room lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.living_room_light
+    to: 'on'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_light_on
+
+- id: living-room-light-off
+  alias: Turn off living room lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.living_room_light
+    to: 'off'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_light_off
+      
+- id: libby-bedroom-light-on
+  alias: Turn on Libby's bedroom lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.libby_bedroom_light
+    to: 'on'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_light_on
+
+- id: libby-bedroom-light-off
+  alias: Turn off Libby's bedroom lights
+  trigger:
+  - platform: state
+    entity_id: input_boolean.libby_bedroom_light
+    to: 'off'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_light_off

@@ -14,11 +14,6 @@ homeassistant:
   
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Toronto
-  
-  # Customized state card
-  customize_glob:
-    "group.master_bedroom":
-      custom_ui_state_card: custom_fan
       
   # Customization file
   customize: !include customize.yaml
@@ -28,13 +23,6 @@ homeassistant:
 
 # Enables the frontend
 frontend:
-  extra_html_url:
-    - /local/custom_ui/state-card-custom-ui.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-custom-ui-es5.html
-
-customizer:
-  custom_ui: local
   
 # Enables configuration UI
 config:
@@ -51,7 +39,7 @@ http:
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
+# updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
@@ -130,17 +118,12 @@ ifttt:
   
 # Ceiling fan lights
 input_boolean:
-  master_bedroom_light:
-    name: Master Bedroom Lights
   carter_bedroom_light:
-    name: Carter's Bedroom Lights    
   libby_bedroom_light:
-    name: Libby's Bedroom Lights
   living_room_light:
-    name: Living Room Lights
   stairway_light:
-    name: Stairway Lights
-    
+  master_bedroom_light:
+  
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

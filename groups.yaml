@@ -5,10 +5,12 @@ default_view:
   entities:
     - persistent_notification.update_available
     - group.weather
-    - group.lights
-    - group.master_bedroom
-    - group.security
     - group.home_climate
+    - group.lights
+    - group.living_room
+    - group.master_bedroom
+    - group.libby_bedroom
+    - group.security
     - group.occupancy
 
 media_players:
@@ -34,15 +36,25 @@ Home Climate:
   - sensor.carters_room_temperature
   - sensor.ecobee_thermostat_humidity
 
+Libby Bedroom:
+  control: hidden
+  entities:
+    - input_boolean.libby_bedroom_light
+
 Lights:
   - switch.smart_switch_1
   - switch.smart_switch_2
+
+Living Room:
+  control: hidden
+  entities:
+    - input_boolean.living_room_light
 
 Master Bedroom:
   control: hidden
   entities:
     - input_boolean.master_bedroom_light
-    - script.turn_off_master_bdrm_ceiling_fan
+    - script.turn_master_bdrm_ceiling_fan_off
     - script.turn_master_bdrm_ceiling_fan_low
     - script.turn_master_bdrm_ceiling_fan_med
     - script.turn_master_bdrm_ceiling_fan_high
