@@ -1,3 +1,4 @@
+# Master Bedroom Ceiling Fan
 turn_master_bdrm_ceiling_fan_off:
   alias: Turn off master bedroom ceiling fan
   sequence:
@@ -24,4 +25,120 @@ turn_master_bdrm_ceiling_fan_high:
   sequence:
   - data:
       event: master_bedroom_ceiling_fan_high
+    service: ifttt.trigger
+    
+# Libby's Bedroom Ceiling Fan
+turn_libby_bdrm_ceiling_fan_off:
+  alias: Turn off Libby's bedroom ceiling fan
+  sequence:
+  - data:
+      event: libby_bedroom_ceiling_fan_off
+    service: ifttt.trigger
+
+turn_libby_bdrm_ceiling_fan_low:
+  alias: Turn Libby's bedroom ceiling fan to low
+  sequence:
+  - data:
+      event: libby_bedroom_ceiling_fan_low
+    service: ifttt.trigger
+
+turn_libby_bdrm_ceiling_fan_med:
+  alias: Turn Libby's bedroom ceiling fan to med
+  sequence:
+  - data:
+      event: libby_bedroom_ceiling_fan_med
+    service: ifttt.trigger
+
+turn_libby_bdrm_ceiling_fan_high:
+  alias: Turn Libby's bedroom ceiling fan to high
+  sequence:
+  - data:
+      event: libby_bedroom_ceiling_fan_high
+    service: ifttt.trigger
+
+# Carter's Bedroom Ceiling Fan
+turn_carter_bdrm_ceiling_fan_off:
+  alias: Turn off Carter's bedroom ceiling fan
+  sequence:
+  - data:
+      event: carter_bedroom_ceiling_fan_off
+    service: ifttt.trigger
+
+turn_carter_bdrm_ceiling_fan_low:
+  alias: Turn Carter's bedroom ceiling fan to low
+  sequence:
+  - data:
+      event: carter_bedroom_ceiling_fan_low
+    service: ifttt.trigger
+
+turn_carter_bdrm_ceiling_fan_med:
+  alias: Turn Carter's bedroom ceiling fan to med
+  sequence:
+  - data:
+      event: carter_bedroom_ceiling_fan_med
+    service: ifttt.trigger
+
+turn_carter_bdrm_ceiling_fan_high:
+  alias: Turn Carter's bedroom ceiling fan to high
+  sequence:
+  - data:
+      event: carter_bedroom_ceiling_fan_high
+    service: ifttt.trigger
+
+# Stairway Ceiling Fan
+turn_stairway_ceiling_fan_off:
+  alias: Turn off stairway ceiling fan
+  sequence:
+  - data:
+      event: stairway_ceiling_fan_off
+    service: ifttt.trigger
+
+turn_stairway_ceiling_fan_low:
+  alias: Turn stairway ceiling fan to low
+  sequence:
+  - data:
+      event: stairway_ceiling_fan_low
+    service: ifttt.trigger
+
+turn_stairway_ceiling_fan_med:
+  alias: Turn stairway ceiling fan to med
+  sequence:
+  - data:
+      event: stairway_ceiling_fan_med
+    service: ifttt.trigger
+
+turn_stairway_ceiling_fan_high:
+  alias: Turn stairway ceiling fan to high
+  sequence:
+  - data:
+      event: stairway_ceiling_fan_high
+    service: ifttt.trigger
+
+# Living Room Ceiling Fan
+turn_living_room_ceiling_fan_off:
+  alias: Turn off living room ceiling fan
+  sequence:
+  - data:
+      event: living_room_ceiling_fan_off
+    service: ifttt.trigger
+
+turn_living_room_ceiling_fan_low:
+  alias: Turn living room ceiling fan to low
+  sequence:
+  - data:
+      event: living_room_ceiling_fan_low
+    service: ifttt.trigger
+
+turn_living_room_ceiling_fan_med:
+  alias: Turn living room ceiling fan to med
+  sequence:
+  - data:
+      event: living_room_ceiling_fan_med
+    service: ifttt.trigger
+
+turn_living_room_ceiling_fan_high:
+  alias: Turn living room ceiling fan to high
+  sequence:
+  - data:
+      event: living_room_ceiling_fan_high
     service: ifttt.trigger

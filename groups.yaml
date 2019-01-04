@@ -8,11 +8,31 @@ default_view:
     - group.home_climate
     - group.lights
     - group.living_room
-    - group.master_bedroom
-    - group.libby_bedroom
+    - group.stairway
     - group.security
     - group.occupancy
 
+master_bedroom_view:
+  name: Master Bedroom
+  view: yes
+  icon: mdi:human-male-female
+  entities:
+    - group.master_bedroom
+
+carter_bedroom_view:
+  name: Carter's Bedroom
+  view: yes
+  icon: mdi:human-male
+  entities:
+    - group.carter_bedroom
+
+libby_bedroom_view:
+  name: Libby's Bedroom
+  view: yes
+  icon: mdi:human-female
+  entities:
+    - group.libby_bedroom
+    
 media_players:
   name: Media
   view: yes
@@ -27,8 +47,17 @@ system_status:
   entities:
     - group.people
 
+Carter Bedroom:
+  name: Carter's Bedroom
+  control: hidden
+  entities:
+    - input_boolean.carter_bedroom_light
+    - script.turn_carter_bdrm_ceiling_fan_off
+    - script.turn_carter_bdrm_ceiling_fan_low
+    - script.turn_carter_bdrm_ceiling_fan_med
+    - script.turn_carter_bdrm_ceiling_fan_high
+
 Home Climate:
-  - configurator.ecobee_thermostat
   - climate.ecobee_thermostat
   - sensor.family_room_temperature
   - sensor.master_bedroom_temperature
@@ -37,9 +66,14 @@ Home Climate:
   - sensor.ecobee_thermostat_humidity
 
 Libby Bedroom:
+  name: Libby's Bedroom
   control: hidden
   entities:
     - input_boolean.libby_bedroom_light
+    - script.turn_libby_bdrm_ceiling_fan_off
+    - script.turn_libby_bdrm_ceiling_fan_low
+    - script.turn_libby_bdrm_ceiling_fan_med
+    - script.turn_libby_bdrm_ceiling_fan_high
 
 Lights:
   - switch.smart_switch_1
@@ -49,6 +83,10 @@ Living Room:
   control: hidden
   entities:
     - input_boolean.living_room_light
+    - script.turn_living_room_ceiling_fan_off
+    - script.turn_living_room_ceiling_fan_low
+    - script.turn_living_room_ceiling_fan_med
+    - script.turn_living_room_ceiling_fan_high
 
 Master Bedroom:
   control: hidden
@@ -80,7 +118,16 @@ People:
 
 Security:
   - camera.front_yard
+  
+Stairway:
+  name: Stairway
+  control: hidden
+  entities:
+    - input_boolean.stairway_light
+    - script.turn_stairway_ceiling_fan_off
+    - script.turn_stairway_ceiling_fan_low
+    - script.turn_stairway_ceiling_fan_med
+    - script.turn_stairway_ceiling_fan_high
 
 Weather:
-  - sun.sun
   - weather.ecobee_thermostat

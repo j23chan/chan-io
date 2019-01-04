@@ -30,8 +30,82 @@ script.turn_master_bdrm_ceiling_fan_high:
 input_boolean.living_room_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
-  
+script.turn_living_room_ceiling_fan_off:
+  friendly_name: 'Off'
+  icon: mdi:fan-off
+  can_cancel: true
+script.turn_living_room_ceiling_fan_low:
+  friendly_name: 'Low'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_living_room_ceiling_fan_med:
+  friendly_name: 'Medium'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_living_room_ceiling_fan_high:
+  friendly_name: 'High'
+  icon: mdi:fan
+  can_cancel: true
+
 # Libby Bedroom
 input_boolean.libby_bedroom_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
+script.turn_libby_bdrm_ceiling_fan_off:
+  friendly_name: 'Off'
+  icon: mdi:fan-off
+  can_cancel: true
+script.turn_libby_bdrm_ceiling_fan_low:
+  friendly_name: 'Low'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_libby_bdrm_ceiling_fan_med:
+  friendly_name: 'Medium'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_libby_bdrm_ceiling_fan_high:
+  friendly_name: 'High'
+  icon: mdi:fan
+  can_cancel: true
+  
+# Stairway
+input_boolean.stairway_light:
+  friendly_name: 'Lights'
+  icon: mdi:lightbulb-on-outline
+script.turn_stairway_ceiling_fan_off:
+  friendly_name: 'Off'
+  icon: mdi:fan-off
+  can_cancel: true
+script.turn_stairway_ceiling_fan_low:
+  friendly_name: 'Low'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_stairway_ceiling_fan_med:
+  friendly_name: 'Medium'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_stairway_ceiling_fan_high:
+  friendly_name: 'High'
+  icon: mdi:fan
+  can_cancel: true
+
+# Carter Bedroom
+input_boolean.carter_bedroom_light:
+  friendly_name: 'Lights'
+  icon: mdi:lightbulb-on-outline
+script.turn_carter_bdrm_ceiling_fan_off:
+  friendly_name: 'Off'
+  icon: mdi:fan-off
+  can_cancel: true
+script.turn_carter_bdrm_ceiling_fan_low:
+  friendly_name: 'Low'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_carter_bdrm_ceiling_fan_med:
+  friendly_name: 'Medium'
+  icon: mdi:fan
+  can_cancel: true
+script.turn_carter_bdrm_ceiling_fan_high:
+  friendly_name: 'High'
+  icon: mdi:fan
+  can_cancel: true

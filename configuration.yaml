@@ -14,7 +14,12 @@ homeassistant:
   
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Toronto
-      
+
+  # Customized global entities
+  #customize_glob:
+  #  "*.*":
+  #    state_card_mode: badges
+
   # Customization file
   customize: !include customize.yaml
 
@@ -23,6 +28,13 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+#  extra_html_url:
+#    - /local/custom_ui/state-card-custom-ui.html
+#  extra_html_url_es5:
+#    - /local/custom_ui/state-card-custom-ui-es5.html
+
+#customizer:
+#  custom_ui: local
   
 # Enables configuration UI
 config:
@@ -118,11 +130,11 @@ ifttt:
   
 # Ceiling fan lights
 input_boolean:
+  master_bedroom_light:
   carter_bedroom_light:
   libby_bedroom_light:
   living_room_light:
   stairway_light:
-  master_bedroom_light:
   
 group: !include groups.yaml
 automation: !include automations.yaml
