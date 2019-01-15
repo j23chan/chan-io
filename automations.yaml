@@ -6,7 +6,7 @@
     at: '18:00:00'
   action:
     service: switch.turn_on
-    entity_id: group.lights
+    entity_id: switch.smart_switch_2
 
 - id: christmas-lights-off
   alias: Turn off Christmas lights at night
@@ -16,8 +16,11 @@
     at: '23:00:00'
   action:
     service: switch.turn_off
-    entity_id: group.lights
+    entity_id: switch.smart_switch_2
 
+################
+#    Master    #
+################
 - id: master-bedroom-light-on
   alias: Turn on master bedroom lights
   initial_state: on
@@ -41,7 +44,54 @@
   - service: ifttt.trigger
     data:
       event: master_bedroom_light_off
+      
+- id: master-bedroom-ceiling-fan-off
+  alias: Turn master bedroom ceiling fan to off
+  trigger:
+  - platform: state
+    entity_id: input_select.master_bedroom_fan_speed
+    to: "Off"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_ceiling_fan_off
 
+- id: master-bedroom-ceiling-fan-low
+  alias: Turn master bedroom ceiling fan to low
+  trigger:
+  - platform: state
+    entity_id: input_select.master_bedroom_fan_speed
+    to: "Low"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_ceiling_fan_low
+
+- id: master-bedroom-ceiling-fan-med
+  alias: Turn master bedroom ceiling fan to med
+  trigger:
+  - platform: state
+    entity_id: input_select.master_bedroom_fan_speed
+    to: "Medium"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_ceiling_fan_med
+      
+- id: master-bedroom-ceiling-fan-high
+  alias: Turn master bedroom ceiling fan to high
+  trigger:
+  - platform: state
+    entity_id: input_select.master_bedroom_fan_speed
+    to: "High"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: master_bedroom_ceiling_fan_high
+
+################
+#    Living    #
+################
 - id: living-room-light-on
   alias: Turn on living room lights
   initial_state: on
@@ -65,7 +115,54 @@
   - service: ifttt.trigger
     data:
       event: living_room_light_off
+
+- id: living-room-ceiling-fan-off
+  alias: Turn living room ceiling fan to off
+  trigger:
+  - platform: state
+    entity_id: input_select.living_room_fan_speed
+    to: "Off"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_ceiling_fan_off
+
+- id: libby-bedroom-ceiling-fan-low
+  alias: Turn living room ceiling fan to low
+  trigger:
+  - platform: state
+    entity_id: input_select.living_room_fan_speed
+    to: "Low"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_ceiling_fan_low
+
+- id: libby-bedroom-ceiling-fan-med
+  alias: Turn living room ceiling fan to med
+  trigger:
+  - platform: state
+    entity_id: input_select.living_room_fan_speed
+    to: "Medium"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_ceiling_fan_med
       
+- id: libby-bedroom-ceiling-fan-high
+  alias: Turn living room ceiling fan to high
+  trigger:
+  - platform: state
+    entity_id: input_select.living_room_fan_speed
+    to: "High"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: living_room_ceiling_fan_high
+      
+################
+#    Libby     #
+################
 - id: libby-bedroom-light-on
   alias: Turn on Libby's bedroom lights
   initial_state: on
@@ -89,7 +186,54 @@
   - service: ifttt.trigger
     data:
       event: libby_bedroom_light_off
+
+- id: libby-bedroom-ceiling-fan-off
+  alias: Turn Libby's ceiling fan to off
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_bedroom_fan_speed
+    to: "Off"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_ceiling_fan_off
+
+- id: libby-bedroom-ceiling-fan-low
+  alias: Turn Libby's ceiling fan to low
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_bedroom_fan_speed
+    to: "Low"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_ceiling_fan_low
+
+- id: libby-bedroom-ceiling-fan-med
+  alias: Turn Libby's ceiling fan to med
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_bedroom_fan_speed
+    to: "Medium"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_ceiling_fan_med
       
+- id: libby-bedroom-ceiling-fan-high
+  alias: Turn Libby's ceiling fan to high
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_bedroom_fan_speed
+    to: "High"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: libby_bedroom_ceiling_fan_high
+
+################
+#    Carter    #
+################
 - id: carter-bedroom-light-on
   alias: Turn on Carter's bedroom lights
   initial_state: on
@@ -113,7 +257,54 @@
   - service: ifttt.trigger
     data:
       event: carter_bedroom_light_off
+
+- id: carter-bedroom-ceiling-fan-off
+  alias: Turn Carter's ceiling fan to off
+  trigger:
+  - platform: state
+    entity_id: input_select.carter_bedroom_fan_speed
+    to: "Off"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: carter_bedroom_ceiling_fan_off
+
+- id: carter-bedroom-ceiling-fan-low
+  alias: Turn Carter's ceiling fan to low
+  trigger:
+  - platform: state
+    entity_id: input_select.carter_bedroom_fan_speed
+    to: "Low"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: carter_bedroom_ceiling_fan_low
+
+- id: carter-bedroom-ceiling-fan-med
+  alias: Turn Carter's ceiling fan to med
+  trigger:
+  - platform: state
+    entity_id: input_select.carter_bedroom_fan_speed
+    to: "Medium"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: carter_bedroom_ceiling_fan_med
       
+- id: carter-bedroom-ceiling-fan-high
+  alias: Turn Carter's ceiling fan to high
+  trigger:
+  - platform: state
+    entity_id: input_select.carter_bedroom_fan_speed
+    to: "High"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: carter_bedroom_ceiling_fan_high
+
+################
+#   Stairway   #
+################
 - id: stairway-light-on
   alias: Turn on stairway lights
   initial_state: on
@@ -137,3 +328,47 @@
   - service: ifttt.trigger
     data:
       event: stairway_light_off
+
+- id: stairway-ceiling-fan-off
+  alias: Turn stairway ceiling fan to off
+  trigger:
+  - platform: state
+    entity_id: input_select.stairway_fan_speed
+    to: "Off"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: stairway_ceiling_fan_off
+
+- id: stairway-ceiling-fan-low
+  alias: Turn stairway ceiling fan to low
+  trigger:
+  - platform: state
+    entity_id: input_select.stairway_fan_speed
+    to: "Low"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: stairway_ceiling_fan_low
+
+- id: stairway-ceiling-fan-med
+  alias: Turn stairway ceiling fan to med
+  trigger:
+  - platform: state
+    entity_id: input_select.stairway_fan_speed
+    to: "Medium"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: stairway_ceiling_fan_med
+      
+- id: stairway-ceiling-fan-high
+  alias: Turn stairway ceiling fan to high
+  trigger:
+  - platform: state
+    entity_id: input_select.stairway_fan_speed
+    to: "High"
+  action:
+  - service: ifttt.trigger
+    data:
+      event: stairway_ceiling_fan_high

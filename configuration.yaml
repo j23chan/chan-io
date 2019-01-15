@@ -15,11 +15,6 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Toronto
 
-  # Customized global entities
-  #customize_glob:
-  #  "*.*":
-  #    state_card_mode: badges
-
   # Customization file
   customize: !include customize.yaml
 
@@ -27,14 +22,10 @@ homeassistant:
 # introduction:
 
 # Enables the frontend
-frontend:
-#  extra_html_url:
-#    - /local/custom_ui/state-card-custom-ui.html
-#  extra_html_url_es5:
-#    - /local/custom_ui/state-card-custom-ui-es5.html
+#frontend: !include frontend.yaml
 
-#customizer:
-#  custom_ui: local
+customizer:
+  custom_ui: local
   
 # Enables configuration UI
 config:
@@ -124,6 +115,47 @@ switch:
   - platform: tplink
     name: Smart Switch 2
     host: 192.168.1.162
+  - platform: mqtt
+    name: "rf_outlet_1"
+    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
+    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
+    payload_on: "349491"
+    payload_off: "349500"
+    optimistic: false
+    retain: true
+  - platform: mqtt
+    name: "rf_outlet_2"
+    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
+    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
+    payload_on: "349635"
+    payload_off: "349644"
+    optimistic: false
+    retain: true
+  - platform: mqtt
+    name: "rf_outlet_3"
+    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
+    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
+    payload_on: "349955"
+    payload_off: "349964"
+    optimistic: false
+    retain: true
+  - platform: mqtt
+    name: "rf_outlet_4"
+    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
+    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
+    payload_on: "351491"
+    payload_off: "351500"
+    optimistic: false
+    retain: true
+  - platform: mqtt
+    name: "rf_outlet_5"
+    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
+    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
+    payload_on: "357635"
+    payload_off: "357644"
+    optimistic: false
+    retain: true
+
     
 ifttt:
   key: !secret ifttt_api_key
@@ -135,7 +167,56 @@ input_boolean:
   libby_bedroom_light:
   living_room_light:
   stairway_light:
-  
+
+# Ceiling fan speeds
+input_select:
+  master_bedroom_fan_speed:
+    options:
+      - 'Off'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+  carter_bedroom_fan_speed:
+    options:
+      - 'Off'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+  libby_bedroom_fan_speed:
+    options:
+      - 'Off'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+  living_room_fan_speed:
+    options:
+      - 'Off'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+  stairway_fan_speed:
+    options:
+      - 'Off'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+      
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+
+mqtt:
+  broker: 192.168.1.160
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: home-assistant
+  
+binary_sensor:
+  - platform: mqtt
+    name: "OpenMQTTGateway"
+    state_topic: "home/OpenMQTTGateway/LWT"
+    payload_on: "online"
+    payload_off: "offline"
+    device_class: "connectivity"

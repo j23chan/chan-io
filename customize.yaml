@@ -1,111 +1,71 @@
 switch.smart_switch_1:
+  friendly_name: 'Garden Light'
+  icon: mdi:flower-outline
+switch.smart_switch_2:
   friendly_name: 'Christmas Lights'
   icon: mdi:light-switch
-switch.smart_switch_2:
-  friendly_name: 'Christmas Tree'
-  icon: mdi:light-switch
+switch.rf_outlet_1:
+  friendly_name: 'Outlet 1'
+  icon: mdi:power-plug  
+switch.rf_outlet_2:
+  friendly_name: 'Outlet 2'
+  icon: mdi:power-plug  
+switch.rf_outlet_3:
+  friendly_name: 'Outlet 3'
+  icon: mdi:power-plug  
+switch.rf_outlet_4:
+  friendly_name: 'Outlet 4'
+  icon: mdi:power-plug  
+switch.rf_outlet_5:
+  friendly_name: 'Outlet 5'
+  icon: mdi:power-plug  
   
 # Master Bedroom
 input_boolean.master_bedroom_light:
   friendly_name: 'Lights'
-  icon: mdi:lightbulb-on-outline
-script.turn_master_bdrm_ceiling_fan_off:
-  friendly_name: 'Off'
-  icon: mdi:fan-off
-  can_cancel: true
-script.turn_master_bdrm_ceiling_fan_low:
-  friendly_name: 'Low'
+  templates:
+    icon: if (state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline';
+    icon_color: if (state == 'on') return 'FDD835'; else return '44739E';
+input_select.master_bedroom_fan_speed:
+  friendly_name: 'Speed'
   icon: mdi:fan
-  can_cancel: true
-script.turn_master_bdrm_ceiling_fan_med:
-  friendly_name: 'Medium'
-  icon: mdi:fan
-  can_cancel: true
-script.turn_master_bdrm_ceiling_fan_high:
-  friendly_name: 'High'
-  icon: mdi:fan
-  can_cancel: true
 
 # Living Room
 input_boolean.living_room_light:
   friendly_name: 'Lights'
-  icon: mdi:lightbulb-on-outline
-script.turn_living_room_ceiling_fan_off:
-  friendly_name: 'Off'
-  icon: mdi:fan-off
-  can_cancel: true
-script.turn_living_room_ceiling_fan_low:
-  friendly_name: 'Low'
+  templates:
+    icon: if (state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline';
+    icon_color: if (state == 'on') return '#FDD835'; else return '#44739E';
+input_select.living_room_fan_speed:
+  friendly_name: 'Speed'
   icon: mdi:fan
-  can_cancel: true
-script.turn_living_room_ceiling_fan_med:
-  friendly_name: 'Medium'
-  icon: mdi:fan
-  can_cancel: true
-script.turn_living_room_ceiling_fan_high:
-  friendly_name: 'High'
-  icon: mdi:fan
-  can_cancel: true
 
 # Libby Bedroom
 input_boolean.libby_bedroom_light:
   friendly_name: 'Lights'
-  icon: mdi:lightbulb-on-outline
-script.turn_libby_bdrm_ceiling_fan_off:
-  friendly_name: 'Off'
-  icon: mdi:fan-off
-  can_cancel: true
-script.turn_libby_bdrm_ceiling_fan_low:
-  friendly_name: 'Low'
+  templates:
+    icon: if (state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline';
+    icon_color: if (state == 'on') return '#FDD835'; else return '#44739E';
+input_select.libby_bedroom_fan_speed:
+  friendly_name: 'Speed'
   icon: mdi:fan
-  can_cancel: true
-script.turn_libby_bdrm_ceiling_fan_med:
-  friendly_name: 'Medium'
-  icon: mdi:fan
-  can_cancel: true
-script.turn_libby_bdrm_ceiling_fan_high:
-  friendly_name: 'High'
-  icon: mdi:fan
-  can_cancel: true
   
 # Stairway
 input_boolean.stairway_light:
   friendly_name: 'Lights'
-  icon: mdi:lightbulb-on-outline
-script.turn_stairway_ceiling_fan_off:
-  friendly_name: 'Off'
-  icon: mdi:fan-off
-  can_cancel: true
-script.turn_stairway_ceiling_fan_low:
-  friendly_name: 'Low'
+  templates:
+    icon: if (state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline';
+    icon_color: if (state == 'on') return 'FDD835'; else return '44739E';
+input_select.stairway_fan_speed:
+  friendly_name: 'Speed'
   icon: mdi:fan
-  can_cancel: true
-script.turn_stairway_ceiling_fan_med:
-  friendly_name: 'Medium'
-  icon: mdi:fan
-  can_cancel: true
-script.turn_stairway_ceiling_fan_high:
-  friendly_name: 'High'
-  icon: mdi:fan
-  can_cancel: true
 
 # Carter Bedroom
 input_boolean.carter_bedroom_light:
   friendly_name: 'Lights'
-  icon: mdi:lightbulb-on-outline
-script.turn_carter_bdrm_ceiling_fan_off:
-  friendly_name: 'Off'
-  icon: mdi:fan-off
-  can_cancel: true
-script.turn_carter_bdrm_ceiling_fan_low:
-  friendly_name: 'Low'
+  templates:
+    icon: if (state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline';
+    icon_color: if (state == 'on') return 'FDD835'; else return '44739E';
+input_select.carter_bedroom_fan_speed:
+  friendly_name: 'Speed'
   icon: mdi:fan
-  can_cancel: true
-script.turn_carter_bdrm_ceiling_fan_med:
-  friendly_name: 'Medium'
-  icon: mdi:fan
-  can_cancel: true
-script.turn_carter_bdrm_ceiling_fan_high:
-  friendly_name: 'High'
-  icon: mdi:fan
-  can_cancel: true
