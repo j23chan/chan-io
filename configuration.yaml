@@ -24,8 +24,8 @@ homeassistant:
 # Enables the frontend
 #frontend: !include frontend.yaml
 
-customizer:
-  custom_ui: local
+#customizer:
+#  custom_ui: local
   
 # Enables configuration UI
 config:
@@ -92,7 +92,7 @@ camera:
 # Unifi Wireless AC
 device_tracker:
   - platform: unifi
-    host: 192.168.1.105
+    host: 192.168.1.160
     username: !secret unifi_controller_username
     password: !secret unifi_controller_password
     verify_ssl: false
@@ -106,7 +106,7 @@ device_tracker:
       - ip
 
 weather:
-  - platform: yweather
+#  - platform: yweather
   
 switch:
   - platform: tplink
@@ -220,3 +220,4 @@ binary_sensor:
     payload_on: "online"
     payload_off: "offline"
     device_class: "connectivity"
+

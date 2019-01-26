@@ -44,12 +44,14 @@ Carter Bedroom:
     - input_select.carter_bedroom_fan_speed
 
 Home Climate:
-  - climate.ecobee_thermostat
-  - sensor.family_room_temperature
-  - sensor.master_bedroom_temperature
-  - sensor.ecobee_thermostat_temperature
-  - sensor.carters_room_temperature
-  - sensor.ecobee_thermostat_humidity
+  control: hidden
+  entities:
+    - climate.ecobee_thermostat
+    - sensor.family_room_temperature
+    - sensor.master_bedroom_temperature
+    - sensor.ecobee_thermostat_temperature
+    - sensor.carters_room_temperature
+    - sensor.ecobee_thermostat_humidity
 
 Libby Bedroom:
   name: Libby's Bedroom
@@ -74,7 +76,7 @@ Living Room:
     - input_select.living_room_fan_speed
 
 Master Bedroom:
-  #control: hidden
+  control: hidden
   entities:
     - input_boolean.master_bedroom_light
     - input_select.master_bedroom_fan_speed
@@ -83,28 +85,32 @@ Media Player:
   - media_player.family_room_tv
 
 Occupancy:
-  - binary_sensor.family_room_occupancy
-  - binary_sensor.master_bedroom_occupancy
-  - binary_sensor.ecobee_thermostat_occupancy
-  - binary_sensor.carters_room_occupancy
-
-Parents:
-  - device_tracker.chansiphone
-  - device_tracker.mer
+  control: hidden
+  entities:
+    - binary_sensor.family_room_occupancy
+    - binary_sensor.master_bedroom_occupancy
+    - binary_sensor.ecobee_thermostat_occupancy
+    - binary_sensor.carters_room_occupancy
 
 People:
-  - device_tracker.chansiphone
-  - device_tracker.mer
-  - device_tracker.mahmah_phone
-  - device_tracker.yehyeh_phone
-  - device_tracker.yvonnes_phone
-  - device_tracker.augustines_phone
+  control: hidden
+  entities:
+    - device_tracker.chansiphone
+    - device_tracker.mer
+    - device_tracker.mahmah_phone
+    - device_tracker.yehyeh_phone
+    - device_tracker.yvonnes_phone
+    - device_tracker.augustines_phone
 
 Security:
-  - camera.front_yard
+  control: hidden
+  entities:
+    - camera.front_yard
   
 System:
-  - binary_sensor.openmqttgateway
+  control: hidden
+  entities:
+    - binary_sensor.openmqttgateway
   
 Stairway:
   name: Stairway
