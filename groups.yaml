@@ -7,7 +7,7 @@ default_view:
     - group.weather
     - group.home_climate
     - group.lights
-    - group.security
+    - group.outdoor
     - group.occupancy
 
 rooms_view:
@@ -26,7 +26,8 @@ media_players:
   view: yes
   icon: mdi:play-box-outline
   entities:
-    - group.media_player
+    - media_player.family_room_tv
+    - media_player.googlehome8146
 
 system_status:
   name: System Status
@@ -81,9 +82,6 @@ Master Bedroom:
     - input_boolean.master_bedroom_light
     - input_select.master_bedroom_fan_speed
 
-Media Player:
-  - media_player.family_room_tv
-
 Occupancy:
   control: hidden
   entities:
@@ -102,10 +100,11 @@ People:
     - device_tracker.yvonnes_phone
     - device_tracker.augustines_phone
 
-Security:
+Outdoor:
   control: hidden
   entities:
     - camera.front_yard
+    - cover.garage_door
   
 System:
   control: hidden

@@ -32,7 +32,7 @@ config:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-  api_password: !secret http_password
+#  api_password: !secret http_password
   base_url: !secret http_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
@@ -104,9 +104,6 @@ device_tracker:
       - last_seen
       - essid
       - ip
-
-weather:
-#  - platform: yweather
   
 switch:
   - platform: tplink
@@ -115,6 +112,7 @@ switch:
   - platform: tplink
     name: Smart Switch 2
     host: 192.168.1.162
+
   - platform: mqtt
     name: "rf_outlet_1"
     state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
@@ -155,7 +153,6 @@ switch:
     payload_off: "357644"
     optimistic: false
     retain: true
-
     
 ifttt:
   key: !secret ifttt_api_key
@@ -221,3 +218,43 @@ binary_sensor:
     payload_off: "offline"
     device_class: "connectivity"
 
+google_assistant:
+  project_id: chan-io
+  api_key: !secret google_assistant_api_key
+  expose_by_default: false
+  entity_config:
+    input_boolean.living_room_light:
+      name: LIVING ROOM LIGHT
+      room: Downstairs
+      expose: true
+    switch.rf_outlet_4:
+      name: LIVING ROOM LAMP
+      room: Downstairs
+      expose: true
+    switch.smart_switch_2:
+      name: CHRISTMAS LIGHTS
+      room: Downstairs
+      expose: true
+    input_boolean.stairway_light:
+      name: STAIR LIGHTS
+      room: Upstairs
+      expose: true
+    input_boolean.master_bedroom_light:
+      name: MASTER BEDROOM LIGHT
+      room: Upstairs
+      expose: true
+
+# Garage Door
+cover:
+  - platform: mqtt
+    name: garage_door
+    state_topic: "garage/door"
+    command_topic: "garage/button"
+    payload_open: "OPEN"
+    payload_close: "OPEN"
+    payload_stop: "OPEN"
+    state_open: "OPENED"
+    state_closed: "CLOSED"
+    optimistic: false
+    retain: false
+    value_template: '{{ value }}'

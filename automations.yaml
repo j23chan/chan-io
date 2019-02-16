@@ -1,3 +1,15 @@
+- id: database-purge
+  alias: Database Purge
+  initial_state: on  
+  trigger:
+    platform: time
+    at: '23:59:59'
+  action:
+    - service: recorder.purge
+      data:
+        keep_days: 7
+        repack: true
+
 - id: christmas-lights-on
   alias: Turn on Christmas lights in the evening
   initial_state: on
@@ -17,6 +29,26 @@
   action:
     service: switch.turn_off
     entity_id: switch.smart_switch_2
+    
+- id: grow-lights-on
+  alias: Turn on grow lights
+  initial_state: on
+  trigger:
+    platform: time
+    at: '22:00:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.smart_switch_1
+
+- id: grow-lights-off
+  alias: Turn off grow lights
+  initial_state: on
+  trigger:
+    platform: time
+    at: '6:00:00'
+  action:
+    service: switch.turn_off
+    entity_id: switch.smart_switch_1
 
 ################
 #    Master    #
