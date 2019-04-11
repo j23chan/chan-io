@@ -1,6 +1,6 @@
-mockupancy:
+vacation_mode:
   sequence:
-    # Wait until it is after 6pm and dark to start the routine
+    # Wait until it is after 6pm and dark to start the script
     - wait_template: "{{ states.sensor.time.state >= '18:00' and is_state('sensor.dark_outside' , 'True') }}"
 
     # Check that it Vacation Mode is ON
@@ -19,8 +19,8 @@ mockupancy:
         - input_boolean.living_room_light
     - delay: 00:00:02
         
-    # Wait until it is after 9pm turn on bedroom lights, turn off downstairs lights
-    - wait_template: "{{ states.sensor.time.state >= '21:00' }}"
+    # Wait until it is after 830pm turn on bedroom lights, turn off downstairs lights
+    - wait_template: "{{ states.sensor.time.state >= '20:30' }}"
     - service: input_boolean.turn_on
       entity_id:
         - input_boolean.master_bedroom_light
@@ -35,22 +35,23 @@ mockupancy:
       entity_id:
         - input_boolean.libby_bedroom_light
     - delay: 00:00:02
-    
-    # Wait until it is after 11pm turn on bedroom lights, turn off downstairs lights
-    - wait_template: "{{ states.sensor.time.state >= '23:00' }}"
-    - service: input_boolean.turn_on
+
+    - service: input_boolean.turn_off
       entity_id:
         - input_boolean.living_room_light
     - delay: 00:00:02
-      
+    
+    # Wait until it is after 9pm turn off stairway light
+    - wait_template: "{{ states.sensor.time.state >= '21:00' }}"
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.stairway_light
     - delay: 00:00:02
     
-    # Switch off the lights, and make sure the calling scripts have stopped
+    # Wait until it is after 10pm, switch off the lights, and stop script
+    - wait_template: "{{ states.sensor.time.state >= '22:00' }}"
     - service: homeassistant.turn_off
       entity_id:
         - group.ceiling_lights
-        - script.mockupancy
+        - script.vacation_mode
     - delay: 00:05:00

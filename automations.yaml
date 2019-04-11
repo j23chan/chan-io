@@ -417,5 +417,5 @@
     service_template: >
       {% if is_state('input_boolean.vacation_mode' , 'on') %} script.turn_on
       {% else %} script.turn_off {% endif %}
-    entity_id: script.mockupancy
+    entity_id: script.vacation_mode
  
