@@ -70,6 +70,11 @@ sensor:
     display_options:
       - 'date_time'
       - 'time'
+  - platform: template
+    sensors:
+      dark_outside:
+        value_template: "{{ is_state('sun.sun', 'below_horizon') }}"
+        friendly_name: "Dark Outside"
 
 # Text to speech
 tts:
@@ -164,6 +169,7 @@ input_boolean:
   libby_bedroom_light:
   living_room_light:
   stairway_light:
+  vacation_mode:
 
 # Ceiling fan speeds
 input_select:
@@ -259,6 +265,7 @@ cover:
     retain: false
     value_template: '{{ value }}'
 
+# RGB strip lights
 light:
   - platform: mqtt
     name: "RGB1"

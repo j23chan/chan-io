@@ -44,6 +44,14 @@ Carter Bedroom:
     - input_boolean.carter_bedroom_light
     - input_select.carter_bedroom_fan_speed
 
+Ceiling Lights:
+  entities:
+    - input_boolean.living_room_light
+    - input_boolean.stairway_light
+    - input_boolean.master_bedroom_light
+    - input_boolean.libby_bedroom_light
+    - input_boolean.carter_bedroom_light
+
 Home Climate:
   control: hidden
   entities:
@@ -111,6 +119,7 @@ Outdoor:
 System:
   control: hidden
   entities:
+    - input_boolean.vacation_mode
     - binary_sensor.openmqttgateway
   
 Stairway:
