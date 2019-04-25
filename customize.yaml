@@ -68,3 +68,4 @@ input_select.carter_bedroom_fan_speed:
 input_boolean.vacation_mode:
   friendly_name: 'Vacation Mode'
   icon: mdi:airplane
+

@@ -1,70 +1,56 @@
-homeassistant:    
+homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
-  
+
   # Location required to calculate the time the sun rises and sets
   latitude: !secret my_latitude
   longitude: !secret my_longitude
-  
+
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: !secret my_elevation
-  
+
   # metric for Metric, imperial for Imperial
   unit_system: metric
-  
+
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Toronto
 
   # Customization file
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-# introduction:
-
-# Enables the frontend
-#frontend: !include frontend.yaml
-
-#customizer:
-#  custom_ui: local
-  
-# Enables configuration UI
-config:
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-#  api_password: !secret http_password
+  ssl_certificate: /home/homeassistant/.homeassistant/dehydrated/certs/chanio.duckdns.org/fullchain.pem
+  ssl_key: /home/homeassistant/.homeassistant/dehydrated/certs/chanio.duckdns.org/privkey.pem
   base_url: !secret http_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-# updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
 
 # Discover some devices automatically
 discovery:
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+# Ecobee
+ecobee:
+  api_key: !secret ecobee_api_key
 
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
+# Mosquitto MQTT Broker
+mqtt:
+  broker: 192.168.1.160
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: chanio
 
 # Sensors
+binary_sensor:
+  - platform: mqtt
+    name: "OpenMQTTGateway"
+    state_topic: "home/OpenMQTTGateway/LWT"
+    payload_on: "online"
+    payload_off: "offline"
+    device_class: "connectivity"
+
 sensor:
   - platform: time_date
     display_options:
@@ -76,21 +62,32 @@ sensor:
         value_template: "{{ is_state('sun.sun', 'below_horizon') }}"
         friendly_name: "Dark Outside"
 
+# Garage Door
+cover:
+  - platform: mqtt
+    name: garage_door
+    state_topic: "garage/door"
+    command_topic: "garage/button"
+    payload_open: "OPEN"
+    payload_close: "OPEN"
+    payload_stop: "OPEN"
+    state_open: "OPENED"
+    state_closed: "CLOSED"
+    optimistic: false
+    retain: false
+    value_template: '{{ value }}'
+
 # Text to speech
 tts:
   - platform: google
 
-# Cloud
-cloud:
+ifttt:
+  key: !secret ifttt_api_key
 
-# Ecobee
-ecobee:
-  api_key: !secret ecobee_api_key
-  
 # Unifi Camera
 camera:
   - platform: uvc
-    nvr: 192.168.1.105
+    nvr: 192.168.1.160
     key: !secret unifi_api_key
     password: !secret unifi_camera_password
 
@@ -109,15 +106,17 @@ device_tracker:
       - last_seen
       - essid
       - ip
-  
-switch:
-  - platform: tplink
-    name: Smart Switch 1
-    host: 192.168.1.161
-  - platform: tplink
-    name: Smart Switch 2
-    host: 192.168.1.162
 
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+tplink:
+  switch:
+    - host: 192.168.1.161
+    - host: 192.168.1.162
+
+switch:
   - platform: mqtt
     name: "rf_outlet_1"
     state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
@@ -158,10 +157,7 @@ switch:
     payload_off: "357644"
     optimistic: false
     retain: true
-    
-ifttt:
-  key: !secret ifttt_api_key
-  
+
 # Ceiling fan lights
 input_boolean:
   master_bedroom_light:
@@ -203,67 +199,6 @@ input_select:
       - 'Low'
       - 'Medium'
       - 'High'
-      
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-
-
-mqtt:
-  broker: 192.168.1.160
-  port: 1883
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  client_id: home-assistant
-  
-binary_sensor:
-  - platform: mqtt
-    name: "OpenMQTTGateway"
-    state_topic: "home/OpenMQTTGateway/LWT"
-    payload_on: "online"
-    payload_off: "offline"
-    device_class: "connectivity"
-
-google_assistant:
-  project_id: chan-io
-  api_key: !secret google_assistant_api_key
-  expose_by_default: false
-  entity_config:
-    input_boolean.living_room_light:
-      name: LIVING ROOM LIGHT
-      room: Downstairs
-      expose: true
-    switch.rf_outlet_4:
-      name: LIVING ROOM LAMP
-      room: Downstairs
-      expose: true
-    switch.smart_switch_2:
-      name: CHRISTMAS LIGHTS
-      room: Downstairs
-      expose: true
-    input_boolean.stairway_light:
-      name: STAIR LIGHTS
-      room: Upstairs
-      expose: true
-    input_boolean.master_bedroom_light:
-      name: MASTER BEDROOM LIGHT
-      room: Upstairs
-      expose: true
-
-# Garage Door
-cover:
-  - platform: mqtt
-    name: garage_door
-    state_topic: "garage/door"
-    command_topic: "garage/button"
-    payload_open: "OPEN"
-    payload_close: "OPEN"
-    payload_stop: "OPEN"
-    state_open: "OPENED"
-    state_closed: "CLOSED"
-    optimistic: false
-    retain: false
-    value_template: '{{ value }}'
 
 # RGB strip lights
 light:

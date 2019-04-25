@@ -27,7 +27,7 @@ media_players:
   icon: mdi:play-box-outline
   entities:
     - media_player.family_room_tv
-    - media_player.googlehome8146
+    - media_player.family_room_speaker
 
 system_status:
   name: System Status
