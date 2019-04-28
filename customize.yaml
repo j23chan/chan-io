@@ -69,3 +69,5 @@ input_boolean.vacation_mode:
   friendly_name: 'Vacation Mode'
   icon: mdi:airplane
 
+sensor.cpu_temperature:
+  icon: mdi:thermometer

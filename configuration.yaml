@@ -79,7 +79,8 @@ cover:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 ifttt:
   key: !secret ifttt_api_key
@@ -269,3 +270,11 @@ light:
     payload_off: "OFF"
     optimistic: false
     retain: true
+
+# CPU temperature
+sensor:
+    - platform: command_line
+      name: CPU Temperature
+      command: "cat /sys/class/thermal/thermal_zone0/temp"
+      unit_of_measurement: "C"
+      value_template: '{{ (value | multiply(0.001)) | round(1) }}'

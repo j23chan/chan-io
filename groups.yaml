@@ -119,6 +119,7 @@ Outdoor:
 System:
   control: hidden
   entities:
+    - sensor.cpu_temperature
     - input_boolean.vacation_mode
     - binary_sensor.openmqttgateway
   
