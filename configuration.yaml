@@ -61,6 +61,11 @@ sensor:
       dark_outside:
         value_template: "{{ is_state('sun.sun', 'below_horizon') }}"
         friendly_name: "Dark Outside"
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "C"
+    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
 
 # Garage Door
 cover:
@@ -81,9 +86,6 @@ cover:
 tts:
   - platform: google_translate
     service_name: google_say
-
-ifttt:
-  key: !secret ifttt_api_key
 
 # Unifi Camera
 camera:
@@ -162,8 +164,11 @@ switch:
 # Ceiling fan lights
 input_boolean:
   master_bedroom_light:
+  master_bedroom_fan_reverse:
   carter_bedroom_light:
+  carter_bedroom_fan_reverse:
   libby_bedroom_light:
+  libby_bedroom_fan_reverse:
   living_room_light:
   stairway_light:
   vacation_mode:
@@ -200,6 +205,37 @@ input_select:
       - 'Low'
       - 'Medium'
       - 'High'
+
+# Ceiling Fan Speeds
+shell_command:
+    master_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000054/tx -X PUT -d {}'
+    master_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000056/tx -X PUT -d {}'
+    master_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/0000004e/tx -X PUT -d {}'
+    master_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000050/tx -X PUT -d {}'
+    master_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000052/tx -X PUT -d {}'
+    master_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000058/tx -X PUT -d {}'
+    carter_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001d/tx -X PUT -d {}'
+    carter_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001f/tx -X PUT -d {}'
+    carter_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000015/tx -X PUT -d {}'
+    carter_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000019/tx -X PUT -d {}'
+    carter_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001b/tx -X PUT -d {}'
+    carter_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000021/tx -X PUT -d {}'
+    libby_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002e/tx -X PUT -d {}'
+    libby_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000030/tx -X PUT -d {}'
+    libby_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000026/tx -X PUT -d {}'
+    libby_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002a/tx -X PUT -d {}'
+    libby_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002c/tx -X PUT -d {}'
+    libby_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000032/tx -X PUT -d {}'
+    living_room_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/00000006/tx -X PUT -d {}'
+    living_room_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000a/tx -X PUT -d {}'
+    living_room_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/00000008/tx -X PUT -d {}'
+    living_room_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000c/tx -X PUT -d {}'
+    living_room_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000e/tx -X PUT -d {}'
+    stairway_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003f/tx -X PUT -d {}'
+    stairway_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/00000041/tx -X PUT -d {}'
+    stairway_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/00000039/tx -X PUT -d {}'
+    stairway_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003b/tx -X PUT -d {}'
+    stairway_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003d/tx -X PUT -d {}'
 
 # RGB strip lights
 light:
@@ -270,11 +306,3 @@ light:
     payload_off: "OFF"
     optimistic: false
     retain: true
-
-# CPU temperature
-sensor:
-    - platform: command_line
-      name: CPU Temperature
-      command: "cat /sys/class/thermal/thermal_zone0/temp"
-      unit_of_measurement: "C"
-      value_template: '{{ (value | multiply(0.001)) | round(1) }}'

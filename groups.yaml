@@ -6,7 +6,7 @@ default_view:
     - persistent_notification.update_available
     - group.weather
     - group.home_climate
-    - group.lights
+    - group.switches
     - group.outdoor
     - group.occupancy
 
@@ -32,7 +32,7 @@ media_players:
 system_status:
   name: System Status
   view: yes
-  icon: mdi:account-group
+  icon: mdi:settings
   entities:
     - group.people
     - group.system
@@ -42,6 +42,7 @@ Carter Bedroom:
   control: hidden
   entities:
     - input_boolean.carter_bedroom_light
+    - input_boolean.carter_bedroom_fan_reverse
     - input_select.carter_bedroom_fan_speed
 
 Ceiling Lights:
@@ -67,9 +68,10 @@ Libby Bedroom:
   control: hidden
   entities:
     - input_boolean.libby_bedroom_light
+    - input_boolean.libby_bedroom_fan_reverse
     - input_select.libby_bedroom_fan_speed
 
-Lights:
+Switches:
   - switch.smart_switch_1
   - switch.smart_switch_2
   - switch.rf_outlet_1
@@ -90,6 +92,7 @@ Master Bedroom:
   control: hidden
   entities:
     - input_boolean.master_bedroom_light
+    - input_boolean.master_bedroom_fan_reverse
     - input_select.master_bedroom_fan_speed
 
 Occupancy:

@@ -61,9 +61,9 @@
     entity_id: input_boolean.master_bedroom_light
     to: 'on'
   action:
-  - service: ifttt.trigger
-    data:
-      event: master_bedroom_light_on
+   - service: shell_command.master_bedroom_light_toggle
+     data:
+       token: !secret bond_token
 
 - id: master-bedroom-light-off
   alias: Turn off master bedroom lights
@@ -73,53 +73,81 @@
     entity_id: input_boolean.master_bedroom_light
     to: 'off'
   action:
-  - service: ifttt.trigger
-    data:
-      event: master_bedroom_light_off
+    - service: shell_command.master_bedroom_light_toggle
+      data:
+        token: !secret bond_token
+
+- id: master-bedroom-fan-reverse
+  alias: Reverse master bedroom fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.master_bedroom_fan_reverse
+    to: 'off'
+  action:
+    - service: shell_command.master_bedroom_fan_reverse
+      data:
+        token: !secret bond_token
+
+- id: master-bedroom-fan-reverse-reverse
+  alias: Reverse reverse master bedroom fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.master_bedroom_fan_reverse
+    to: 'on'
+  action:
+    - service: shell_command.master_bedroom_fan_reverse
+      data:
+        token: !secret bond_token
       
 - id: master-bedroom-ceiling-fan-off
   alias: Turn master bedroom ceiling fan to off
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.master_bedroom_fan_speed
     to: "Off"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.master_bedroom_fan_off
     data:
-      event: master_bedroom_ceiling_fan_off
+      token: !secret bond_token
 
 - id: master-bedroom-ceiling-fan-low
   alias: Turn master bedroom ceiling fan to low
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.master_bedroom_fan_speed
     to: "Low"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.master_bedroom_fan_low
     data:
-      event: master_bedroom_ceiling_fan_low
+      token: !secret bond_token
 
 - id: master-bedroom-ceiling-fan-med
   alias: Turn master bedroom ceiling fan to med
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.master_bedroom_fan_speed
     to: "Medium"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.master_bedroom_fan_med
     data:
-      event: master_bedroom_ceiling_fan_med
+      token: !secret bond_token
       
 - id: master-bedroom-ceiling-fan-high
   alias: Turn master bedroom ceiling fan to high
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.master_bedroom_fan_speed
     to: "High"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.master_bedroom_fan_high
     data:
-      event: master_bedroom_ceiling_fan_high
+      token: !secret bond_token
 
 ################
 #    Living    #
@@ -132,9 +160,9 @@
     entity_id: input_boolean.living_room_light
     to: 'on'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_light_toggle
     data:
-      event: living_room_light_on
+      token: !secret bond_token
 
 - id: living-room-light-off
   alias: Turn off living room lights
@@ -144,53 +172,57 @@
     entity_id: input_boolean.living_room_light
     to: 'off'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_light_toggle
     data:
-      event: living_room_light_off
+      token: !secret bond_token
 
 - id: living-room-ceiling-fan-off
   alias: Turn living room ceiling fan to off
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.living_room_fan_speed
     to: "Off"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_fan_off
     data:
-      event: living_room_ceiling_fan_off
+      token: !secret bond_token
 
-- id: libby-bedroom-ceiling-fan-low
+- id: living-room-ceiling-fan-low
   alias: Turn living room ceiling fan to low
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.living_room_fan_speed
     to: "Low"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_fan_low
     data:
-      event: living_room_ceiling_fan_low
+      token: !secret bond_token
 
-- id: libby-bedroom-ceiling-fan-med
+- id: living-room-ceiling-fan-med
   alias: Turn living room ceiling fan to med
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.living_room_fan_speed
     to: "Medium"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_fan_med
     data:
-      event: living_room_ceiling_fan_med
+      token: !secret bond_token
       
-- id: libby-bedroom-ceiling-fan-high
+- id: living-room-ceiling-fan-high
   alias: Turn living room ceiling fan to high
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.living_room_fan_speed
     to: "High"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.living_room_fan_high
     data:
-      event: living_room_ceiling_fan_high
+      token: !secret bond_token
       
 ################
 #    Libby     #
@@ -203,9 +235,9 @@
     entity_id: input_boolean.libby_bedroom_light
     to: 'on'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_light_toggle
     data:
-      event: libby_bedroom_light_on
+      token: !secret bond_token
 
 - id: libby-bedroom-light-off
   alias: Turn off Libby's bedroom lights
@@ -215,53 +247,81 @@
     entity_id: input_boolean.libby_bedroom_light
     to: 'off'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_light_toggle
     data:
-      event: libby_bedroom_light_off
+      token: !secret bond_token
 
 - id: libby-bedroom-ceiling-fan-off
   alias: Turn Libby's ceiling fan to off
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.libby_bedroom_fan_speed
     to: "Off"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_fan_off
     data:
-      event: libby_bedroom_ceiling_fan_off
+      token: !secret bond_token
 
 - id: libby-bedroom-ceiling-fan-low
   alias: Turn Libby's ceiling fan to low
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.libby_bedroom_fan_speed
     to: "Low"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_fan_low
     data:
-      event: libby_bedroom_ceiling_fan_low
+      token: !secret bond_token
 
 - id: libby-bedroom-ceiling-fan-med
   alias: Turn Libby's ceiling fan to med
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.libby_bedroom_fan_speed
     to: "Medium"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_fan_med
     data:
-      event: libby_bedroom_ceiling_fan_med
+      token: !secret bond_token
       
 - id: libby-bedroom-ceiling-fan-high
   alias: Turn Libby's ceiling fan to high
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.libby_bedroom_fan_speed
     to: "High"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.libby_bedroom_fan_high
     data:
-      event: libby_bedroom_ceiling_fan_high
+      token: !secret bond_token
+
+- id: libby-bedroom-ceiling-fan-reverse
+  alias: Reverse direction of Libby's ceiling fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.libby_bedroom_fan_reverse
+    to: "on"
+  action:
+  - service: shell_command.libby_bedroom_fan_reverse
+    data:
+      token: !secret bond_token
+
+- id: libby-bedroom-ceiling-fan-reverse-reverse
+  alias: Reverse reverse direction of Libby's ceiling fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.libby_bedroom_fan_reverse
+    to: "off"
+  action:
+  - service: shell_command.libby_bedroom_fan_reverse
+    data:
+      token: !secret bond_token
 
 ################
 #    Carter    #
@@ -274,9 +334,9 @@
     entity_id: input_boolean.carter_bedroom_light
     to: 'on'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_light_toggle
     data:
-      event: carter_bedroom_light_on
+      token: !secret bond_token
 
 - id: carter-bedroom-light-off
   alias: Turn off Carter's bedroom lights
@@ -286,53 +346,81 @@
     entity_id: input_boolean.carter_bedroom_light
     to: 'off'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_light_toggle
     data:
-      event: carter_bedroom_light_off
+      token: !secret bond_token
 
 - id: carter-bedroom-ceiling-fan-off
   alias: Turn Carter's ceiling fan to off
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.carter_bedroom_fan_speed
     to: "Off"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_fan_off
     data:
-      event: carter_bedroom_ceiling_fan_off
+      token: !secret bond_token
 
 - id: carter-bedroom-ceiling-fan-low
   alias: Turn Carter's ceiling fan to low
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.carter_bedroom_fan_speed
     to: "Low"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_fan_low
     data:
-      event: carter_bedroom_ceiling_fan_low
+      token: !secret bond_token
 
 - id: carter-bedroom-ceiling-fan-med
   alias: Turn Carter's ceiling fan to med
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.carter_bedroom_fan_speed
     to: "Medium"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_fan_med
     data:
-      event: carter_bedroom_ceiling_fan_med
+      token: !secret bond_token
       
 - id: carter-bedroom-ceiling-fan-high
   alias: Turn Carter's ceiling fan to high
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.carter_bedroom_fan_speed
     to: "High"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.carter_bedroom_fan_high
     data:
-      event: carter_bedroom_ceiling_fan_high
+      token: !secret bond_token
+
+- id: carter-bedroom-ceiling-fan-reverse
+  alias: Reverse direction of Carter's ceiling fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.carter_bedroom_fan_reverse
+    to: "on"
+  action:
+  - service: shell_command.carter_bedroom_fan_reverse
+    data:
+      token: !secret bond_token
+
+- id: carter-bedroom-ceiling-fan-reverse-reverse
+  alias: Reverse reverse direction of Carter's ceiling fan
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.carter_bedroom_fan_reverse
+    to: "off"
+  action:
+  - service: shell_command.carter_bedroom_fan_reverse
+    data:
+      token: !secret bond_token
 
 ################
 #   Stairway   #
@@ -345,9 +433,9 @@
     entity_id: input_boolean.stairway_light
     to: 'on'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_light_toggle
     data:
-      event: stairway_light_on
+      token: !secret bond_token
 
 - id: stairway-light-off
   alias: Turn off stairway lights
@@ -357,53 +445,57 @@
     entity_id: input_boolean.stairway_light
     to: 'off'
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_light_toggle
     data:
-      event: stairway_light_off
+      token: !secret bond_token
 
 - id: stairway-ceiling-fan-off
   alias: Turn stairway ceiling fan to off
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.stairway_fan_speed
     to: "Off"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_fan_off
     data:
-      event: stairway_ceiling_fan_off
+      token: !secret bond_token
 
 - id: stairway-ceiling-fan-low
   alias: Turn stairway ceiling fan to low
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.stairway_fan_speed
     to: "Low"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_fan_low
     data:
-      event: stairway_ceiling_fan_low
+      token: !secret bond_token
 
 - id: stairway-ceiling-fan-med
   alias: Turn stairway ceiling fan to med
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.stairway_fan_speed
     to: "Medium"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_fan_med
     data:
-      event: stairway_ceiling_fan_med
+      token: !secret bond_token
       
 - id: stairway-ceiling-fan-high
   alias: Turn stairway ceiling fan to high
+  initial_state: on
   trigger:
   - platform: state
     entity_id: input_select.stairway_fan_speed
     to: "High"
   action:
-  - service: ifttt.trigger
+  - service: shell_command.stairway_fan_high
     data:
-      event: stairway_ceiling_fan_high
+      token: !secret bond_token
       
 #####################
 #   Vacation Mode   #

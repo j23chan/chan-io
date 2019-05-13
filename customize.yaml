@@ -28,6 +28,9 @@ cover.garage_door:
 input_boolean.master_bedroom_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
+input_boolean.master_bedroom_fan_reverse:
+  friendly_name: 'Reverse'
+  icon: mdi:loop
 input_select.master_bedroom_fan_speed:
   friendly_name: 'Speed'
   icon: mdi:fan
@@ -44,6 +47,9 @@ input_select.living_room_fan_speed:
 input_boolean.libby_bedroom_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
+input_boolean.libby_bedroom_fan_reverse:
+  friendly_name: 'Reverse'
+  icon: mdi:loop
 input_select.libby_bedroom_fan_speed:
   friendly_name: 'Speed'
   icon: mdi:fan
@@ -60,6 +66,9 @@ input_select.stairway_fan_speed:
 input_boolean.carter_bedroom_light:
   friendly_name: 'Lights'
   icon: mdi:lightbulb-on-outline
+input_boolean.carter_bedroom_fan_reverse:
+  friendly_name: 'Reverse'
+  icon: mdi:loop
 input_select.carter_bedroom_fan_speed:
   friendly_name: 'Speed'
   icon: mdi:fan
