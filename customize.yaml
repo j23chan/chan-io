@@ -1,27 +1,29 @@
 switch.smart_switch_1:
-  friendly_name: 'Garden Light'
-  icon: mdi:flower-outline
-switch.smart_switch_2:
-  friendly_name: 'Christmas Lights'
+  friendly_name: 'Wifi Switch 1'
   icon: mdi:light-switch
-switch.rf_outlet_1:
-  friendly_name: 'Outlet 1 (Garage)'
+switch.smart_switch_2:
+  friendly_name: 'Wifi Switch 2'
+  icon: mdi:light-switch
+switch.tristate_80aaa1_10:
+  friendly_name: 'Outlet 1 (Garage Fan)'
   icon: mdi:power-plug  
-switch.rf_outlet_2:
-  friendly_name: 'Outlet 2 (Carters Room)'
+switch.tristate_80aaa4_10:
+  friendly_name: 'Outlet 2'
   icon: mdi:power-plug  
-switch.rf_outlet_3:
+switch.tristate_80aa90_10:
   friendly_name: 'Outlet 3'
   icon: mdi:power-plug  
-switch.rf_outlet_4:
+switch.tristate_80aa60_10:
   friendly_name: 'Outlet 4 (Family Room Light)'
   icon: mdi:power-plug  
-switch.rf_outlet_5:
+switch.tristate_80a9a0_10:
   friendly_name: 'Outlet 5'
   icon: mdi:power-plug
   
 # Garage Door
 cover.garage_door:
+  friendly_name: 'Garage'
+camera.garage_camera:
   friendly_name: 'Garage'
   
 # Master Bedroom

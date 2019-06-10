@@ -12,7 +12,7 @@
 
 - id: christmas-lights-on
   alias: Turn on Christmas lights in the evening
-  initial_state: on
+  initial_state: off
   trigger:
     platform: time
     at: '18:00:00'
@@ -22,7 +22,7 @@
 
 - id: christmas-lights-off
   alias: Turn off Christmas lights at night
-  initial_state: on
+  initial_state: off
   trigger:
     platform: time
     at: '23:00:00'
@@ -32,7 +32,7 @@
     
 - id: grow-lights-on
   alias: Turn on grow lights
-  initial_state: on
+  initial_state: off
   trigger:
     platform: time
     at: '22:00:00'
@@ -42,7 +42,7 @@
 
 - id: grow-lights-off
   alias: Turn off grow lights
-  initial_state: on
+  initial_state: off
   trigger:
     platform: time
     at: '6:00:00'

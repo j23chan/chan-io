@@ -74,11 +74,11 @@ Libby Bedroom:
 Switches:
   - switch.smart_switch_1
   - switch.smart_switch_2
-  - switch.rf_outlet_1
-  - switch.rf_outlet_2
-  - switch.rf_outlet_3
-  - switch.rf_outlet_4
-  - switch.rf_outlet_5
+  - switch.tristate_80aaa1_10
+  - switch.tristate_80aaa4_10
+  - switch.tristate_80aa90_10
+  - switch.tristate_80aa60_10
+  - switch.tristate_80a9a0_10
 #  - light.rgb1
 #  - light.rgb2
 
@@ -117,14 +117,15 @@ Outdoor:
   control: hidden
   entities:
     - camera.front_yard
+    - camera.garage_camera
     - cover.garage_door
+    - switch.reboot_garage_camera
   
 System:
   control: hidden
   entities:
     - sensor.cpu_temperature
     - input_boolean.vacation_mode
-    - binary_sensor.openmqttgateway
   
 Stairway:
   name: Stairway

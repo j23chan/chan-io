@@ -43,14 +43,6 @@ mqtt:
   client_id: chanio
 
 # Sensors
-binary_sensor:
-  - platform: mqtt
-    name: "OpenMQTTGateway"
-    state_topic: "home/OpenMQTTGateway/LWT"
-    payload_on: "online"
-    payload_off: "offline"
-    device_class: "connectivity"
-
 sensor:
   - platform: time_date
     display_options:
@@ -66,6 +58,8 @@ sensor:
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "C"
     value_template: '{{ (value | multiply(0.001)) | round(1) }}'
+  - platform: rflink
+    automatic_add: true
 
 # Garage Door
 cover:
@@ -120,46 +114,14 @@ tplink:
     - host: 192.168.1.162
 
 switch:
-  - platform: mqtt
-    name: "rf_outlet_1"
-    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
-    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
-    payload_on: "349491"
-    payload_off: "349500"
-    optimistic: false
-    retain: true
-  - platform: mqtt
-    name: "rf_outlet_2"
-    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
-    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
-    payload_on: "349635"
-    payload_off: "349644"
-    optimistic: false
-    retain: true
-  - platform: mqtt
-    name: "rf_outlet_3"
-    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
-    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
-    payload_on: "349955"
-    payload_off: "349964"
-    optimistic: false
-    retain: true
-  - platform: mqtt
-    name: "rf_outlet_4"
-    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
-    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
-    payload_on: "351491"
-    payload_off: "351500"
-    optimistic: false
-    retain: true
-  - platform: mqtt
-    name: "rf_outlet_5"
-    state_topic: "home/OpenMQTTGateway/433toMQTT" # defined by subjectGTWRFtoMQTT in User_config.h
-    command_topic: "home/OpenMQTTGateway/commands/MQTTto433/PLSL_183/433_1"
-    payload_on: "357635"
-    payload_off: "357644"
-    optimistic: false
-    retain: true
+  - platform: rflink
+    automatic_add: true
+    devices:
+      TriState_80aaa1_10: {}
+      TriState_80aaa4_10: {}
+      TriState_80aa90_10: {}
+      TriState_80aa60_10: {}
+      TriState_80a9a0_10: {}
 
 # Ceiling fan lights
 input_boolean:
@@ -306,3 +268,9 @@ light:
     payload_off: "OFF"
     optimistic: false
     retain: true
+  
+  - platform: rflink
+    automatic_add: true
+
+rflink:
+  port: /dev/ttyUSB0
