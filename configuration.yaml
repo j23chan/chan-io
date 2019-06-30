@@ -273,4 +273,6 @@ light:
     automatic_add: true
 
 rflink:
-  port: /dev/ttyUSB0
+#  host: 192.168.1.181
+#  port: 2323
+  port: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
