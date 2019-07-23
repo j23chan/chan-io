@@ -8,8 +8,8 @@ switch.sonoff_switch:
   friendly_name: 'Switch 3 (Carter Room)'
   icon: mdi:light-switch
 switch.tristate_80aaa1_10:
-  friendly_name: 'Outlet 1 (Garage Fan)'
-  icon: mdi:power-plug  
+  friendly_name: 'Garage Fan'
+  icon: mdi:fan  
 switch.tristate_80aaa4_10:
   friendly_name: 'Outlet 2 (Living Room Light)'
   icon: mdi:power-plug  

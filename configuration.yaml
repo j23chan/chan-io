@@ -33,6 +33,10 @@ http:
 # Discover some devices automatically
 discovery:
 
+# Lovelace UI Mode
+lovelace:
+  mode: yaml
+
 # Ecobee
 ecobee:
   api_key: !secret ecobee_api_key
@@ -107,7 +111,7 @@ device_tracker:
       - essid
       - ip
 
-group: !include groups.yaml
+group:
 automation: !include automations.yaml
 script: !include scripts.yaml
 
