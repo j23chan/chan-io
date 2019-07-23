@@ -18,6 +18,9 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+  # Home Assistant Packages
+  packages: !include_dir_named packages
+
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -122,6 +125,19 @@ switch:
       TriState_80aa90_10: {}
       TriState_80aa60_10: {}
       TriState_80a9a0_10: {}
+
+  - platform: mqtt
+    name: "Sonoff Switch"
+    state_topic: "stat/sonoff/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoff/POWER"
+    availability_topic: "tele/sonoff/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
 
 # Ceiling fan lights
 input_boolean:

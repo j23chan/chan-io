@@ -1,8 +1,11 @@
 switch.smart_switch_1:
-  friendly_name: 'Wifi Switch 1'
+  friendly_name: 'Switch 1'
   icon: mdi:light-switch
 switch.smart_switch_2:
-  friendly_name: 'Wifi Switch 2'
+  friendly_name: 'Switch 2'
+  icon: mdi:light-switch
+switch.sonoff_switch:
+  friendly_name: 'Switch 3 (Carter Room)'
   icon: mdi:light-switch
 switch.tristate_80aaa1_10:
   friendly_name: 'Outlet 1 (Garage Fan)'

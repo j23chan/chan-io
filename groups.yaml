@@ -74,6 +74,7 @@ Libby Bedroom:
 Switches:
   - switch.smart_switch_1
   - switch.smart_switch_2
+  - switch.sonoff_switch
   - switch.tristate_80aaa1_10
   - switch.tristate_80aaa4_10
   - switch.tristate_80aa90_10
