@@ -190,34 +190,34 @@ input_select:
 
 # Ceiling Fan Speeds
 shell_command:
-    master_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000054/tx -X PUT -d {}'
-    master_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000056/tx -X PUT -d {}'
-    master_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/0000004e/tx -X PUT -d {}'
-    master_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000050/tx -X PUT -d {}'
-    master_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000052/tx -X PUT -d {}'
-    master_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/commands/00000058/tx -X PUT -d {}'
-    carter_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001d/tx -X PUT -d {}'
-    carter_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001f/tx -X PUT -d {}'
-    carter_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000015/tx -X PUT -d {}'
-    carter_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000019/tx -X PUT -d {}'
-    carter_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/0000001b/tx -X PUT -d {}'
-    carter_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/commands/00000021/tx -X PUT -d {}'
-    libby_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002e/tx -X PUT -d {}'
-    libby_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000030/tx -X PUT -d {}'
-    libby_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000026/tx -X PUT -d {}'
-    libby_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002a/tx -X PUT -d {}'
-    libby_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/0000002c/tx -X PUT -d {}'
-    libby_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/commands/00000032/tx -X PUT -d {}'
-    living_room_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/00000006/tx -X PUT -d {}'
-    living_room_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000a/tx -X PUT -d {}'
-    living_room_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/00000008/tx -X PUT -d {}'
-    living_room_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000c/tx -X PUT -d {}'
-    living_room_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/commands/0000000e/tx -X PUT -d {}'
-    stairway_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003f/tx -X PUT -d {}'
-    stairway_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/00000041/tx -X PUT -d {}'
-    stairway_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/00000039/tx -X PUT -d {}'
-    stairway_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003b/tx -X PUT -d {}'
-    stairway_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/commands/0000003d/tx -X PUT -d {}'
+    master_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/ToggleLight -X PUT -d {}'
+    master_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/TurnOff -X PUT -d {}'
+    master_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
+    master_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
+    master_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
+    master_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000049/actions/ToggleDirection -X PUT -d {}'
+    carter_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/ToggleLight -X PUT -d {}'
+    carter_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/TurnOff -X PUT -d {}'
+    carter_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
+    carter_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
+    carter_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
+    carter_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000012/actions/ToggleDirection -X PUT -d {}'
+    libby_bedroom_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/ToggleLight -X PUT -d {}'
+    libby_bedroom_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/TurnOff -X PUT -d {}'
+    libby_bedroom_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
+    libby_bedroom_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
+    libby_bedroom_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
+    libby_bedroom_fan_reverse: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000023/actions/ToggleDirection -X PUT -d {}'
+    living_room_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/actions/ToggleLight -X PUT -d {}'
+    living_room_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/actions/TurnOff -X PUT -d {}'
+    living_room_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
+    living_room_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
+    living_room_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000003/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
+    stairway_light_toggle: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/ToggleLight -X PUT -d {}'
+    stairway_fan_off: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/TurnOff -X PUT -d {}'
+    stairway_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
+    stairway_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
+    stairway_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
 
 # RGB strip lights
 light:
@@ -296,3 +296,8 @@ rflink:
 #  host: 192.168.1.181
 #  port: 2323
   port: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+
+
+# IOS Notifications
+ios:
+

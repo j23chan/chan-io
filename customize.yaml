@@ -1,86 +1,86 @@
 switch.smart_switch_1:
-  friendly_name: 'Switch 1'
+  friendly_name: "Switch 1"
   icon: mdi:light-switch
 switch.smart_switch_2:
-  friendly_name: 'Switch 2'
+  friendly_name: "Switch 2"
   icon: mdi:light-switch
 switch.sonoff_switch:
-  friendly_name: 'Switch 3 (Carter Room)'
+  friendly_name: "Switch 3 (Google Home)"
   icon: mdi:light-switch
 switch.tristate_80aaa1_10:
-  friendly_name: 'Garage Fan'
+  friendly_name: "Garage Fan"
   icon: mdi:fan  
 switch.tristate_80aaa4_10:
-  friendly_name: 'Outlet 2 (Living Room Light)'
+  friendly_name: "Outlet 2 (Living Room Light)"
   icon: mdi:power-plug  
 switch.tristate_80aa90_10:
-  friendly_name: 'Outlet 3'
+  friendly_name: "Outlet 3"
   icon: mdi:power-plug  
 switch.tristate_80aa60_10:
-  friendly_name: 'Outlet 4 (Family Room Light)'
+  friendly_name: "Outlet 4 (Family Room Light)"
   icon: mdi:power-plug  
 switch.tristate_80a9a0_10:
-  friendly_name: 'Outlet 5 (Google Home)'
+  friendly_name: "Outlet 5"
   icon: mdi:power-plug
   
 # Garage Door
 cover.garage_door:
-  friendly_name: 'Garage'
+  friendly_name: "Garage"
 camera.garage_camera:
-  friendly_name: 'Garage'
+  friendly_name: "Garage"
   
 # Master Bedroom
 input_boolean.master_bedroom_light:
-  friendly_name: 'Lights'
+  friendly_name: "Lights"
   icon: mdi:lightbulb-on-outline
 input_boolean.master_bedroom_fan_reverse:
-  friendly_name: 'Reverse'
+  friendly_name: "Reverse"
   icon: mdi:loop
 input_select.master_bedroom_fan_speed:
-  friendly_name: 'Speed'
+  friendly_name: "Speed"
   icon: mdi:fan
 
 # Living Room
 input_boolean.living_room_light:
-  friendly_name: 'Lights'
+  friendly_name: "Lights"
   icon: mdi:lightbulb-on-outline
 input_select.living_room_fan_speed:
-  friendly_name: 'Speed'
+  friendly_name: "Speed"
   icon: mdi:fan
 
 # Libby Bedroom
 input_boolean.libby_bedroom_light:
-  friendly_name: 'Lights'
+  friendly_name: "Lights"
   icon: mdi:lightbulb-on-outline
 input_boolean.libby_bedroom_fan_reverse:
-  friendly_name: 'Reverse'
+  friendly_name: "Reverse"
   icon: mdi:loop
 input_select.libby_bedroom_fan_speed:
-  friendly_name: 'Speed'
+  friendly_name: "Speed"
   icon: mdi:fan
   
 # Stairway
 input_boolean.stairway_light:
-  friendly_name: 'Lights'
+  friendly_name: "Lights"
   icon: mdi:lightbulb-on-outline
 input_select.stairway_fan_speed:
-  friendly_name: 'Speed'
+  friendly_name: "Speed"
   icon: mdi:fan
 
 # Carter Bedroom
 input_boolean.carter_bedroom_light:
-  friendly_name: 'Lights'
+  friendly_name: "Lights"
   icon: mdi:lightbulb-on-outline
 input_boolean.carter_bedroom_fan_reverse:
-  friendly_name: 'Reverse'
+  friendly_name: "Reverse"
   icon: mdi:loop
 input_select.carter_bedroom_fan_speed:
-  friendly_name: 'Speed'
+  friendly_name: "Speed"
   icon: mdi:fan
 
 # Vacation Mode
 input_boolean.vacation_mode:
-  friendly_name: 'Vacation Mode'
+  friendly_name: "Vacation Mode"
   icon: mdi:airplane
 
 sensor.cpu_temperature:

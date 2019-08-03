@@ -511,3 +511,19 @@
       {% else %} script.turn_off {% endif %}
     entity_id: script.vacation_mode
  
+
+#####################
+# IOS Notifications #
+#####################
+- id: test-ios-notification
+  alias: Test IOS Notification
+  initial_state: off
+  trigger:
+  - platform: state
+    entity_id: switch.smart_switch_1
+    to: 'on'
+  action:
+    service: notify.ios_chans_iphone
+    data:
+      title: "Smart Alerts"
+      message: "Something is happening at home!"
