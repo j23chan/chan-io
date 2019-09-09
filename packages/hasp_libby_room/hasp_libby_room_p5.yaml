@@ -1,0 +1,40 @@
+automation:
+  - alias: hasp_libby_room_p5_lava
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[5].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_lava
+
+  - alias: hasp_libby_room_p5_rainbow
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[5].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_rainbow
+
+  - alias: hasp_libby_room_p5_ocean
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[5].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_ocean
+
+  - alias: hasp_libby_room_p5_yellowout
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[5].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_yellowout
+
+  - alias: hasp_libby_room_p5_splash
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[5].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_splash

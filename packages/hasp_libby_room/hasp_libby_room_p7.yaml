@@ -1,0 +1,18 @@
+automation:
+  - alias: hasp_libby_room_p7_reboot_switch
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[7].b[1]'
+      payload: 'ON'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/hasp_libby/command/reboot'
+
+  - alias: hasp_libby_room_p7_reboot_led
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[7].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_reboot_led

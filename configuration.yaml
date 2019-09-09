@@ -33,6 +33,9 @@ http:
 # Discover some devices automatically
 discovery:
 
+# Recorder Service
+recorder:
+
 # Lovelace UI Mode
 lovelace:
   mode: yaml
@@ -187,6 +190,11 @@ input_select:
       - 'Low'
       - 'Medium'
       - 'High'
+  libby_room_wled_effects:
+    options:
+      - 'Off'
+      - 'On'
+      - 'Lava Rain'
 
 # Ceiling Fan Speeds
 shell_command:
@@ -218,6 +226,33 @@ shell_command:
     stairway_fan_low: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 1}"'
     stairway_fan_med: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 2}"'
     stairway_fan_high: 'curl -H "BOND-Token: {{ token }}" -i http://192.168.1.165/v2/devices/00000034/actions/SetSpeed -X PUT -d "{\"argument\": 3}"'
+    libby_room_wled_toggle: "curl -X GET 'http://wled-libby.local/win&T=2'"
+    libby_room_wled_solid: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0'"
+    libby_room_wled_wipe: "curl -X GET 'http://wled-libby.local/win&T=1&FX=4'"
+    libby_room_wled_rainbow: "curl -X GET 'http://wled-libby.local/win&T=1&FX=9&FP=11'"
+    libby_room_wled_dual_scan: "curl -X GET 'http://wled-libby.local/win&T=1&FX=11'"
+    libby_room_wled_rain: "curl -X GET 'http://wled-libby.local/win&T=1&FX=43'"
+    libby_room_wled_pride: "curl -X GET 'http://wled-libby.local/win&T=1&FX=63'"
+    libby_room_wled_ripple: "curl -X GET 'http://wled-libby.local/win&T=1&FX=79'"
+    libby_room_wled_fireworks: "curl -X GET 'http://wled-libby.local/win&T=1&FX=42'"
+    libby_room_wled_colorwaves: "curl -X GET 'http://wled-libby.local/win&T=1&FX=67&FP=11'"
+    libby_room_wled_twinklefox: "curl -X GET 'http://wled-libby.local/win&T=1&FX=80'"
+    libby_room_wled_warm_white: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0&R=240&G=192&B=36'"
+    libby_room_wled_cool_white: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0&R=207&G=202&B=200'"
+    libby_room_wled_pink: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0&R=225&G=100&B=227'"
+    libby_room_wled_purple: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0&R=149&G=10&B=255'"
+    libby_room_wled_red: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0&R=255&G=57&B=8'"
+    libby_room_wled_lava: "curl -X GET 'http://wled-libby.local/win&T=1&FP=8'"
+    libby_room_wled_rainbow: "curl -X GET 'http://wled-libby.local/win&T=1&FP=11'"
+    libby_room_wled_ocean: "curl -X GET 'http://wled-libby.local/win&T=1&FP=9'"
+    libby_room_wled_yellowout: "curl -X GET 'http://wled-libby.local/win&T=1&FP=17'"
+    libby_room_wled_splash: "curl -X GET 'http://wled-libby.local/win&T=1&FP=19'"
+    libby_room_wled_sunset: "curl -X GET 'http://wled-libby.local/win&T=1&FP=21'"
+    libby_room_wled_departure: "curl -X GET 'http://wled-libby.local/win&T=1&FP=24'"
+    libby_room_wled_hult: "curl -X GET 'http://wled-libby.local/win&T=1&FP=28'"
+    libby_room_wled_sakura: "curl -X GET 'http://wled-libby.local/win&T=1&FP=49'"
+    libby_room_wled_april_night: "curl -X GET 'http://wled-libby.local/win&T=1&FP=46'"
+    libby_room_wled_reboot_led: "curl -X GET 'http://wled-libby.local/win&RR=1'"
 
 # RGB strip lights
 light:
@@ -288,6 +323,25 @@ light:
     payload_off: "OFF"
     optimistic: false
     retain: true
+
+  - platform: mqtt
+    name: "Libby Room LED Lights"
+    command_topic: "wled/wled-libby"
+    brightness_command_topic: "wled/wled-libby"
+    rgb_command_topic: "wled/wled-libby/col"
+    rgb_command_template: "{{ '#%02x%02x%02x' | format(red, green, blue)}}"
+    effect_command_topic : "wled/wled-libby/api"
+    effect_list:
+    - "[FX=00] Solid"
+    - "[FX=04] Wipe"
+    - "[FX=11] Dual Scan"
+    - "[FX=16] Saw"
+    - "[FX=22] Sparkle+"
+    - "[FX=42] Fireworks"
+    - "[FX=43] Rain"
+    - "[FX=63] Pride"
+    - "[FX=74] Colortwinkle"
+    - "[FX=79] Ripple"
   
   - platform: rflink
     automatic_add: true

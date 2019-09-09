@@ -74,6 +74,7 @@ views:
           - input_boolean.libby_bedroom_light
           - input_boolean.libby_bedroom_fan_reverse
           - input_select.libby_bedroom_fan_speed
+          - light.libby_room_led_lights
         title: Libby's Bedroom
         show_header_toggle: false
       - type: entities

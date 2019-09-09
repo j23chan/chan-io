@@ -1,0 +1,40 @@
+automation:
+  - alias: hasp_libby_room_p3_pride
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[3].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_pride
+
+  - alias: hasp_libby_room_p3_ripple
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[3].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_ripple
+
+  - alias: hasp_libby_room_p3_fireworks
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[3].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_fireworks
+
+  - alias: hasp_libby_room_p3_colorwaves
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[3].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_colorwaves
+
+  - alias: hasp_libby_room_p3_twinklefox
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[3].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_twinklefox

@@ -510,7 +510,36 @@
       {% if is_state('input_boolean.vacation_mode' , 'on') %} script.turn_on
       {% else %} script.turn_off {% endif %}
     entity_id: script.vacation_mode
- 
+
+- id: libby-room-wled-off
+  alias: Libby WLED Off
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_room_wled_effects
+    to: "Off"
+  action:
+  - service: shell_command.libby_room_wled_off
+
+- id: libby-room-wled-on
+  alias: Libby WLED On
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_room_wled_effects
+    to: "On"
+  action:
+  - service: shell_command.libby_room_wled_on
+
+- id: libby-room-wled-lava-rain
+  alias: Libby WLED Lava Rain Theme
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: input_select.libby_room_wled_effects
+    to: "Lava Rain"
+  action:
+  - service: shell_command.libby_room_wled_lava_rain
 
 #####################
 # IOS Notifications #

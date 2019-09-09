@@ -1,0 +1,40 @@
+automation:
+  - alias: hasp_libby_room_p6_sunset
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[6].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_sunset
+
+  - alias: hasp_libby_room_p6_departure
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[6].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_departure
+
+  - alias: hasp_libby_room_p6_hult
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[6].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_hult
+
+  - alias: hasp_libby_room_p6_sakura
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[6].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_sakura
+
+  - alias: hasp_libby_room_p6_april_night
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[6].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_april_night

@@ -1,0 +1,40 @@
+automation:
+  - alias: hasp_libby_room_p4_warm_white
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[4].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_warm_white
+
+  - alias: hasp_libby_room_p4_cool_white
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[4].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_cool_white
+
+  - alias: hasp_libby_room_p4_pink
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[4].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_pink
+
+  - alias: hasp_libby_room_p4_purple
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[4].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_purple
+
+  - alias: hasp_libby_room_p4_red
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[4].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_red

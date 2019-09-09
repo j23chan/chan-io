@@ -1,0 +1,68 @@
+automation:
+  - alias: hasp_libby_room_p1_toggle_light
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[1]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_light_toggle
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_fan_low
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_fan_low
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_fan_med
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_fan_med
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_fan_high
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_fan_high
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_fan_off
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_fan_off
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_fan_reverse
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_bedroom_fan_reverse
+      data:
+        token: !secret bond_token
+
+  - alias: hasp_libby_room_p1_led_lights_toggle
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[1].b[8]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_toggle

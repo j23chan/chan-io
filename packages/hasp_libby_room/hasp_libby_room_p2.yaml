@@ -1,0 +1,40 @@
+automation:
+  - alias: hasp_libby_room_p2_solid
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[2].b[2]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_solid
+
+  - alias: hasp_libby_room_p2_wipe
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[2].b[3]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_wipe
+
+  - alias: hasp_libby_room_p2_rainbow
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[2].b[4]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_rainbow
+
+  - alias: hasp_libby_room_p2_dual_scan
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[2].b[5]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_dual_scan
+
+  - alias: hasp_libby_room_p2_rain
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/hasp_libby/state/p[2].b[6]'
+      payload: 'ON'
+    action:
+    - service: shell_command.libby_room_wled_rain
