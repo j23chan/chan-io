@@ -23,8 +23,8 @@ switch.tristate_80aa60_10:
   friendly_name: "Outlet 4 (Family Room Light)"
   icon: mdi:power-plug  
 switch.tristate_80a9a0_10:
-  friendly_name: "Outlet 5"
-  icon: mdi:power-plug
+  friendly_name: "Ventilation Fan 1 (Master Bedroom)"
+  icon: mdi:fan
   
 # Garage Door
 cover.garage_door:

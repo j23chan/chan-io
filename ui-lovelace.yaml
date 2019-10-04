@@ -15,6 +15,7 @@ views:
           - sensor.ecobee_thermostat_temperature
           - sensor.carters_room_temperature
           - sensor.ecobee_thermostat_humidity
+          - switch.tristate_80a9a0_10
         title: Home Climate
         show_header_toggle: false
       - type: entities
@@ -25,7 +26,6 @@ views:
           - switch.tristate_80aaa4_10
           - switch.tristate_80aa90_10
           - switch.tristate_80aa60_10
-          - switch.tristate_80a9a0_10
         title: Switches
         show_header_toggle: true
       - type: vertical-stack

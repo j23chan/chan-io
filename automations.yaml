@@ -532,6 +532,9 @@
       {% else %} script.turn_off {% endif %}
     entity_id: script.vacation_mode
 
+#####################
+#   Libby LEDs      #
+#####################
 - id: libby-room-wled-off
   alias: Libby WLED Off
   initial_state: on
@@ -577,3 +580,29 @@
     data:
       title: "Smart Alerts"
       message: "Something is happening at home!"
+
+#####################
+# Ventilation Fans  #
+#####################
+- id: ventilation-fan-1-master-bedroom-on
+  alias: Turn on Cyclone ventilation fan 1 (master bedroom)
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: sensor.ecobee_fan_mode
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.TriState_80a9a0_10
+
+- id: ventilation-fan-1-master-bedroom-off
+  alias: Turn off Cyclone ventilation fan 1 (master bedroom)
+  initial_state: on
+  trigger:
+  - platform: state
+    entity_id: sensor.ecobee_fan_mode
+    to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.TriState_80a9a0_10
+    

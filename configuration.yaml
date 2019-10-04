@@ -63,6 +63,9 @@ sensor:
       dark_outside:
         value_template: "{{ is_state('sun.sun', 'below_horizon') }}"
         friendly_name: "Dark Outside"
+      ecobee_fan_mode:
+        value_template: "{{ states.climate.ecobee_thermostat.attributes.fan }}"
+        friendly_name: "Ecobee Fan Mode"
   - platform: command_line
     name: CPU Temperature
     command: "cat /sys/class/thermal/thermal_zone0/temp"
