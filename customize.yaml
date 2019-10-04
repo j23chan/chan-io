@@ -4,9 +4,12 @@ switch.smart_switch_1:
 switch.smart_switch_2:
   friendly_name: "Switch 2"
   icon: mdi:light-switch
-switch.sonoff_switch:
-  friendly_name: "Switch 3 (Google Home)"
-  icon: mdi:light-switch
+switch.porch_light:
+  friendly_name: "Porch Light"
+  icon: mdi:lightbulb
+switch.backyard_light:
+  friendly_name: "Backyard Light"
+  icon: mdi:lightbulb
 switch.tristate_80aaa1_10:
   friendly_name: "Garage Fan"
   icon: mdi:fan  

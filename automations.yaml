@@ -30,25 +30,46 @@
     service: switch.turn_off
     entity_id: switch.smart_switch_2
     
-- id: grow-lights-on
-  alias: Turn on grow lights
-  initial_state: off
+- id: porch-lights-on
+  alias: Turn on porch lights 15 mins after sunset
+  initial_state: on
   trigger:
-    platform: time
-    at: '22:00:00'
+    platform: sun
+    event: sunset
+    offset: "00:15:00"
   action:
     service: switch.turn_on
-    entity_id: switch.smart_switch_1
+    entity_id: switch.porch_light
 
-- id: grow-lights-off
-  alias: Turn off grow lights
-  initial_state: off
+- id: porch-lights-off
+  alias: Turn off porch lights
+  initial_state: on
   trigger:
     platform: time
-    at: '6:00:00'
+    at: '23:30:00'
   action:
     service: switch.turn_off
-    entity_id: switch.smart_switch_1
+    entity_id: switch.porch_light
+
+- id: backyard-light-on
+  alias: Turn on backyard light
+  initial_state: on
+  trigger:
+    platform: time
+    at: '19:00:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.backyard_light
+
+- id: backyard-light-off
+  alias: Turn off backyard light
+  initial_state: on
+  trigger:
+    platform: time
+    at: '23:30:00'
+  action:
+    service: switch.turn_off
+    entity_id: switch.backyard_light
 
 ################
 #    Master    #

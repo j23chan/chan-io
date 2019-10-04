@@ -122,6 +122,8 @@ tplink:
   switch:
     - host: 192.168.1.161
     - host: 192.168.1.162
+    - host: 192.168.1.193
+    - host: 192.168.1.194
 
 switch:
   - platform: rflink

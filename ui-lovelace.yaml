@@ -21,7 +21,6 @@ views:
         entities:
           - switch.smart_switch_1
           - switch.smart_switch_2
-          - switch.sonoff_switch
           - type: divider
           - switch.tristate_80aaa4_10
           - switch.tristate_80aa90_10
@@ -35,7 +34,8 @@ views:
             entities:
               - cover.garage_door
               - switch.tristate_80aaa1_10
-              - switch.reboot_garage_camera
+              - switch.porch_light
+              - switch.backyard_light
             title: Outdoor
             show_header_toggle: false
           - type: picture-entity
@@ -117,6 +117,8 @@ views:
         entities:
           - sensor.cpu_temperature
           - input_boolean.vacation_mode
+          - switch.reboot_garage_camera
+          - script.reboot_garage_sensor
         title: System
         show_header_toggle: false
     icon: 'mdi:settings'
