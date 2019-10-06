@@ -592,8 +592,11 @@
     entity_id: sensor.ecobee_fan_mode
     to: 'on'
   action:
-    service: switch.turn_on
-    entity_id: switch.TriState_80a9a0_10
+    - service: switch.turn_on
+      entity_id: switch.TriState_80a9a0_10
+    - service: shell_command.master_bedroom_fan_low
+      data:
+        token: !secret bond_token
 
 - id: ventilation-fan-1-master-bedroom-off
   alias: Turn off Cyclone ventilation fan 1 (master bedroom)
@@ -603,6 +606,9 @@
     entity_id: sensor.ecobee_fan_mode
     to: 'off'
   action:
-    service: switch.turn_off
-    entity_id: switch.TriState_80a9a0_10
-    
+    - service: switch.turn_off
+      entity_id: switch.TriState_80a9a0_10
+    - service: shell_command.master_bedroom_fan_off
+      data:
+        token: !secret bond_token
+
