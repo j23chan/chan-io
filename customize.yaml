@@ -1,9 +1,12 @@
+light.wled_light_christmas:
+  friendly_name: "Christmas Tree Lights"
+  icon: mdi:pine-tree
 switch.smart_switch_1:
-  friendly_name: "Switch 1"
+  friendly_name: "Stairway Lights"
   icon: mdi:light-switch
-switch.smart_switch_2:
-  friendly_name: "Switch 2"
-  icon: mdi:light-switch
+switch.outdoor_plug_1:
+  friendly_name: "Gazebo Lights"
+  icon: mdi:lightbulb
 switch.porch_light:
   friendly_name: "Porch Light"
   icon: mdi:lightbulb
@@ -14,13 +17,13 @@ switch.tristate_80aaa1_10:
   friendly_name: "Garage Fan"
   icon: mdi:fan  
 switch.tristate_80aaa4_10:
-  friendly_name: "Outlet 2 (Living Room Light)"
+  friendly_name: "Living Room Floor Lamp"
   icon: mdi:power-plug  
 switch.tristate_80aa90_10:
-  friendly_name: "Outlet 3"
-  icon: mdi:power-plug  
+  friendly_name: "Grow Lights"
+  icon: mdi:lightbulb  
 switch.tristate_80aa60_10:
-  friendly_name: "Outlet 4 (Family Room Light)"
+  friendly_name: "Family Room Floor Lamp"
   icon: mdi:power-plug  
 switch.tristate_80a9a0_10:
   friendly_name: "Ventilation Fan 1 (Master Bedroom)"

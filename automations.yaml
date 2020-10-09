@@ -10,28 +10,41 @@
         keep_days: 7
         repack: true
 
-- id: christmas-lights-on
-  alias: Turn on Christmas lights in the evening
-  initial_state: off
+- id: grow-lights-on
+  alias: Turn on grow lights at sunrise
+  initial_state: on
   trigger:
-    platform: time
-    at: '18:00:00'
+    platform: sun
+    event: sunrise
   action:
-    service: switch.turn_on
-    entity_id: switch.smart_switch_2
+    - service: switch.turn_on
+      entity_id: 
+        - switch.tristate_80aa90_10
 
-- id: christmas-lights-off
-  alias: Turn off Christmas lights at night
-  initial_state: off
+- id: grow-lights-off
+  alias: Turn off grow lights at sunset
+  initial_state: on
+  trigger:
+    platform: sun
+    event: sunset
+  action:
+    - service: switch.turn_off
+      entity_id: 
+        - switch.tristate_80aa90_10
+
+- id: gazebo-lights-off
+  alias: Turn off gazebo lights at 11pm
+  initial_state: on
   trigger:
     platform: time
     at: '23:00:00'
   action:
-    service: switch.turn_off
-    entity_id: switch.smart_switch_2
+    - service: switch.turn_off
+      entity_id:
+        - switch.outdoor_plug_1
     
-- id: porch-lights-on
-  alias: Turn on porch lights 15 mins after sunset
+- id: outdoor-lights-on
+  alias: Turn on porch/backyard lights 15 mins after sunset
   initial_state: on
   trigger:
     platform: sun
@@ -39,37 +52,42 @@
     offset: "00:15:00"
   action:
     service: switch.turn_on
-    entity_id: switch.porch_light
+    entity_id: 
+      - switch.porch_light
+      - switch.backyard_light
 
-- id: porch-lights-off
-  alias: Turn off porch lights
+- id: outside-lights-off
+  alias: Turn off porch/backyard lights
   initial_state: on
   trigger:
     platform: time
     at: '23:30:00'
   action:
     service: switch.turn_off
-    entity_id: switch.porch_light
+    entity_id: 
+      - switch.porch_light
+      - switch.backyard_light
 
-- id: backyard-light-on
-  alias: Turn on backyard light
+- id: stairway-banister-light-on
+  alias: Turn on stairway banister lights
   initial_state: on
   trigger:
-    platform: time
-    at: '19:00:00'
+    platform: sun
+    event: sunset
+    offset: '01:00:00'
   action:
     service: switch.turn_on
-    entity_id: switch.backyard_light
+    entity_id: switch.smart_switch_1
 
-- id: backyard-light-off
-  alias: Turn off backyard light
+- id: stairway-banister-light-off
+  alias: Turn off stairway banister lights
   initial_state: on
   trigger:
     platform: time
-    at: '23:30:00'
+    at: '00:00:00'
   action:
     service: switch.turn_off
-    entity_id: switch.backyard_light
+    entity_id: switch.smart_switch_1
 
 ################
 #    Master    #
@@ -521,16 +539,65 @@
 #####################
 #   Vacation Mode   #
 #####################
-- alias: vacation-mode
-  initial_state: on
+- alias: vacation-mode-1-on
+  initial_state: off
   trigger:
-    platform: state
-    entity_id: input_boolean.vacation_mode
+    platform: time
+    at: '19:00:00' 
   action:
-    service_template: >
-      {% if is_state('input_boolean.vacation_mode' , 'on') %} script.turn_on
-      {% else %} script.turn_off {% endif %}
-    entity_id: script.vacation_mode
+  - service: shell_command.carter_bedroom_light_toggle
+    data:
+      token: !secret bond_token
+
+- alias: vacation-mode-1-off
+  initial_state: off
+  trigger:
+    platform: time
+    at: '22:00:00' 
+  action:
+  - service: shell_command.carter_bedroom_light_toggle
+    data:
+      token: !secret bond_token
+
+- alias: vacation-mode-2-on
+  initial_state: off
+  trigger:
+    platform: sun
+    event: sunset
+  action:
+  - service: shell_command.living_room_light_toggle
+    data:
+      token: !secret bond_token
+
+- alias: vacation-mode-2-off
+  initial_state: off
+  trigger:
+    platform: time
+    at: '21:30:00'
+  action:
+  - service: shell_command.living_room_light_toggle
+    data:
+      token: !secret bond_token
+
+- alias: vacation-mode-3-on
+  initial_state: off
+  trigger:
+    platform: time
+    at: '21:00:00'
+  action:
+  - service: shell_command.master_bedroom_light_toggle
+    data:
+      token: !secret bond_token
+
+- alias: vacation-mode-3-off
+  initial_state: off
+  trigger:
+    platform: time
+    at: '23:45:00'
+  action:
+  - service: shell_command.master_bedroom_light_toggle
+    data:
+      token: !secret bond_token
 
 #####################
 #   Libby LEDs      #
@@ -555,16 +622,6 @@
   action:
   - service: shell_command.libby_room_wled_on
 
-- id: libby-room-wled-lava-rain
-  alias: Libby WLED Lava Rain Theme
-  initial_state: on
-  trigger:
-  - platform: state
-    entity_id: input_select.libby_room_wled_effects
-    to: "Lava Rain"
-  action:
-  - service: shell_command.libby_room_wled_lava_rain
-
 #####################
 # IOS Notifications #
 #####################
@@ -584,8 +641,8 @@
 #####################
 # Ventilation Fans  #
 #####################
-- id: ventilation-fan-1-master-bedroom-on
-  alias: Turn on Cyclone ventilation fan 1 (master bedroom)
+- id: ventilation-fans-on
+  alias: Turn on ventilation fans
   initial_state: on
   trigger:
   - platform: state
@@ -593,13 +650,15 @@
     to: 'on'
   action:
     - service: switch.turn_on
-      entity_id: switch.TriState_80a9a0_10
-    - service: shell_command.master_bedroom_fan_low
+      entity_id: 
+        - switch.TriState_80a9a0_10
+        - switch.tristate_80aaa4_10
+    - service: shell_command.stairway_fan_low
       data:
         token: !secret bond_token
 
-- id: ventilation-fan-1-master-bedroom-off
-  alias: Turn off Cyclone ventilation fan 1 (master bedroom)
+- id: ventilation-fans-off
+  alias: Turn off ventilation fans
   initial_state: on
   trigger:
   - platform: state
@@ -607,8 +666,9 @@
     to: 'off'
   action:
     - service: switch.turn_off
-      entity_id: switch.TriState_80a9a0_10
-    - service: shell_command.master_bedroom_fan_off
+      entity_id: 
+        - switch.TriState_80a9a0_10
+        - switch.tristate_80aaa4_10
+    - service: shell_command.stairway_fan_off
       data:
         token: !secret bond_token
-

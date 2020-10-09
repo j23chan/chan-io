@@ -15,18 +15,15 @@ views:
           - sensor.ecobee_thermostat_temperature
           - sensor.carters_room_temperature
           - sensor.ecobee_thermostat_humidity
-          - switch.tristate_80a9a0_10
         title: Home Climate
         show_header_toggle: false
       - type: entities
         entities:
           - switch.smart_switch_1
-          - switch.smart_switch_2
           - type: divider
-          - switch.tristate_80aaa4_10
-          - switch.tristate_80aa90_10
           - switch.tristate_80aa60_10
-        title: Switches
+          - switch.tristate_80aa90_10
+        title: Lights
         show_header_toggle: true
       - type: vertical-stack
         cards:
@@ -34,14 +31,14 @@ views:
             entities:
               - cover.garage_door
               - switch.tristate_80aaa1_10
+              - type: divider
               - switch.porch_light
               - switch.backyard_light
+              - switch.outdoor_plug_1
             title: Outdoor
             show_header_toggle: false
           - type: picture-entity
             entity: camera.front_yard
-          - type: picture-entity
-            entity: camera.garage_camera
       - type: entities
         entities:
           - binary_sensor.family_room_occupancy
@@ -74,7 +71,7 @@ views:
           - input_boolean.libby_bedroom_light
           - input_boolean.libby_bedroom_fan_reverse
           - input_select.libby_bedroom_fan_speed
-          - light.libby_room_led_lights
+          - light.wled_light_libby
         title: Libby's Bedroom
         show_header_toggle: false
       - type: entities
@@ -105,12 +102,10 @@ views:
     cards:
       - type: entities
         entities:
-          - device_tracker.chansiphone
-          - device_tracker.mer
+          - device_tracker.chans_iphone
+          - device_tracker.iphone_4
           - device_tracker.mahmah_phone
           - device_tracker.yehyeh_phone
-          - device_tracker.yvonnes_phone
-          - device_tracker.augustines_phone
         title: People
         show_header_toggle: false
       - type: entities

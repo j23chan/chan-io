@@ -28,7 +28,7 @@ default_config:
 http:
   ssl_certificate: /home/homeassistant/.homeassistant/dehydrated/certs/chanio.duckdns.org/fullchain.pem
   ssl_key: /home/homeassistant/.homeassistant/dehydrated/certs/chanio.duckdns.org/privkey.pem
-  base_url: !secret http_url
+#  base_url: !secret http_url
 
 # Discover some devices automatically
 discovery:
@@ -102,20 +102,13 @@ camera:
     password: !secret unifi_camera_password
 
 # Unifi Wireless AC
-device_tracker:
-  - platform: unifi
-    host: 192.168.1.160
-    username: !secret unifi_controller_username
-    password: !secret unifi_controller_password
-    verify_ssl: false
-    detection_time: 60
-    ssid_filter:
-      - 'beyoootch'
-      - 'beyoootch_5g'
-    monitored_conditions:
-      - last_seen
-      - essid
-      - ip
+#unifi:
+#  controllers:
+#    - host: 192.168.1.160
+#      site: 192.168.1.160
+#      ssid_filter:
+#        - 'beyoootch'
+#        - 'beyoootch_5g'
 
 group:
 automation: !include automations.yaml
@@ -127,6 +120,8 @@ tplink:
     - host: 192.168.1.162
     - host: 192.168.1.193
     - host: 192.168.1.194
+  strip:
+    - host: 192.168.1.122
 
 switch:
   - platform: rflink
@@ -195,11 +190,6 @@ input_select:
       - 'Low'
       - 'Medium'
       - 'High'
-  libby_room_wled_effects:
-    options:
-      - 'Off'
-      - 'On'
-      - 'Lava Rain'
 
 # Ceiling Fan Speeds
 shell_command:
@@ -234,7 +224,6 @@ shell_command:
     libby_room_wled_toggle: "curl -X GET 'http://wled-libby.local/win&T=2'"
     libby_room_wled_solid: "curl -X GET 'http://wled-libby.local/win&T=1&FX=0'"
     libby_room_wled_wipe: "curl -X GET 'http://wled-libby.local/win&T=1&FX=4'"
-    libby_room_wled_rainbow: "curl -X GET 'http://wled-libby.local/win&T=1&FX=9&FP=11'"
     libby_room_wled_dual_scan: "curl -X GET 'http://wled-libby.local/win&T=1&FX=11'"
     libby_room_wled_rain: "curl -X GET 'http://wled-libby.local/win&T=1&FX=43'"
     libby_room_wled_pride: "curl -X GET 'http://wled-libby.local/win&T=1&FX=63'"
@@ -360,3 +349,8 @@ rflink:
 # IOS Notifications
 ios:
 
+# Amazon Fire TV
+media_player:
+  - platform: androidtv
+    name: Amazon Firestick 4k
+    host: 192.168.1.183
