@@ -641,34 +641,54 @@
 #####################
 # Ventilation Fans  #
 #####################
-- id: ventilation-fans-on
-  alias: Turn on ventilation fans
-  initial_state: on
+- id: ventilation-fans-on-heat
+  alias: Turn on ventilation fans (heating)
+  initial_state: true
   trigger:
   - platform: state
-    entity_id: sensor.ecobee_fan_mode
-    to: 'on'
+    entity_id: climate.ecobee_thermostat_2
+    attribute: hvac_action
+    to: 'heating'
   action:
-    - service: switch.turn_on
-      entity_id: 
-        - switch.TriState_80a9a0_10
-        - switch.tristate_80aaa4_10
-    - service: shell_command.stairway_fan_low
-      data:
-        token: !secret bond_token
+  - service: switch.turn_on
+    entity_id:
+    - switch.TriState_80a9a0_10
+    - switch.tristate_80aaa4_10
+  - service: shell_command.stairway_fan_low
+    data:
+      token: !secret bond_token
+
+- id: ventilation-fans-on-cool
+  alias: Turn on ventilation fans (cooling)
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: climate.ecobee_thermostat_2
+    attribute: hvac_action
+    to: 'cooling'
+  action:
+  - service: switch.turn_on
+    entity_id:
+    - switch.TriState_80a9a0_10
+    - switch.tristate_80aaa4_10
+  - service: shell_command.stairway_fan_low
+    data:
+      token: !secret bond_token
 
 - id: ventilation-fans-off
   alias: Turn off ventilation fans
-  initial_state: on
+  initial_state: true
   trigger:
   - platform: state
-    entity_id: sensor.ecobee_fan_mode
-    to: 'off'
+    entity_id: climate.ecobee_thermostat_2
+    attribute: hvac_action
+    to: 'idle'
+    for: '00:00:30'
   action:
-    - service: switch.turn_off
-      entity_id: 
-        - switch.TriState_80a9a0_10
-        - switch.tristate_80aaa4_10
-    - service: shell_command.stairway_fan_off
-      data:
-        token: !secret bond_token
+  - service: switch.turn_off
+    entity_id:
+    - switch.TriState_80a9a0_10
+    - switch.tristate_80aaa4_10
+  - service: shell_command.stairway_fan_low
+    data:
+      token: !secret bond_token
