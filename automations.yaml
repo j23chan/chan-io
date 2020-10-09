@@ -689,6 +689,6 @@
     entity_id:
     - switch.TriState_80a9a0_10
     - switch.tristate_80aaa4_10
-  - service: shell_command.stairway_fan_low
+  - service: shell_command.stairway_fan_off
     data:
       token: !secret bond_token
