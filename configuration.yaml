@@ -146,6 +146,54 @@ switch:
     payload_not_available: "Offline"
     retain: false
 
+  - platform: mqtt
+    name: "Sonoff 4ch 1"
+    state_topic: "stat/sonoff4ch/POWER1"
+    command_topic: "cmnd/sonoff4ch/POWER1"
+    availability_topic: "tele/sonoff4ch/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
+  - platform: mqtt
+    name: "Sonoff 4ch 2"
+    state_topic: "stat/sonoff4ch/POWER2"
+    command_topic: "cmnd/sonoff4ch/POWER2"
+    availability_topic: "tele/sonoff4ch/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
+  - platform: mqtt
+    name: "Sonoff 4ch 3"
+    state_topic: "stat/sonoff4ch/POWER3"
+    command_topic: "cmnd/sonoff4ch/POWER3"
+    availability_topic: "tele/sonoff4ch/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
+  - platform: mqtt
+    name: "Sonoff 4ch 4"
+    state_topic: "stat/sonoff4ch/POWER4"
+    command_topic: "cmnd/sonoff4ch/POWER4"
+    availability_topic: "tele/sonoff4ch/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
 # Ceiling fan lights
 input_boolean:
   master_bedroom_light:
